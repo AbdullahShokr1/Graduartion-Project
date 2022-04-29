@@ -29,9 +29,9 @@ class PostRequest extends FormRequest
                 'title' => 'required|string|max:70|unique:posts',
                 'description' => 'required|string|max:155',
                 'keywords' => 'required|string|max:200',
-                'content' => 'required',
+                'mycontent' => 'required',
                 'category_id' => 'required|exists:categories,id',
-                'writer_id' => 'required|exists:users,id',
+                'writer_id' => 'required|exists:admins,id',
                 'slug' => 'required|string|max:50|unique:posts',
                 'photo' => 'nullable',
             ];
@@ -42,9 +42,9 @@ class PostRequest extends FormRequest
                 'title' => ['required', 'string', 'max:70', Rule::unique('posts')->ignore($this->post->id)],
                 'description' => ['required','string','max:155'],
                 'keywords' => ['required','string','max:200'],
-                'content' => ['required'],
+                'mycontent' => ['required'],
                 'category_id' => ['required','exists:categories,id'],
-                'writer_id' => ['required','exists:users,id'],
+                'writer_id' => ['required','exists:admins,id'],
                 'slug' => ['required','string','max:50', Rule::unique('posts')->ignore($this->post->id)],
                 'photo' => 'nullable',
             ];

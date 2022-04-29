@@ -40,11 +40,4 @@ class CategoryController extends Controller
         $category->delete();
         return redirect()->route('dashboard.category.index')->with(['success'=>'Category Deleted Successfully']) ;
     }
-
-    public function show($slug)
-    {
-
-        $category = Category::select('id','title','slug')->where('slug',$slug)->first();
-        return view('dashboard.category.Show',['posts'=> Post::get()],compact('category'));
-    }
 }

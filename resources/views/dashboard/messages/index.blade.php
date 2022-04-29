@@ -23,7 +23,7 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Messages</h3>
+                <h3 class="card-title">{{$contacts->count()}} Messages</h3>
                 @if(session('success'))
                     <div class="alert alert-success" role="alert">{{session('success')}}</div>
                 @endif
@@ -57,36 +57,36 @@
                     <tbody>
                     @foreach($contacts as $contact)
                         <tr>
-                            <td>
+                            <td style="width: 1%">
                                 {{$contact->id}}
                             </td>
-                            <td>
+                            <td style="width: 10%">
                                 {{$contact->name}}
                             </td>
-                            <td>
+                            <td style="width: 10%">
                                 {{$contact->email}}
                             </td>
                             <td class="project_progress">
                                 {{$contact->phone}}
                             </td>
-                            <td>
+                            <td style="width: 20%">
                                 {{$contact->subject}}
                             </td>
-                            <td>
-                                {{$contact->message}}
+                            <td style="width: 20%">
+                                {{\Illuminate\Support\Str::limit($contact->message, 30, '...')}}
                             </td>
 
                             <td class="project-actions text-right">
-                                <a class="btn btn-primary btn-sm" href="#">
+                                <a class="btn btn-primary btn-sm" href="{{route('dashboard.show-message',$contact->id)}}">
                                     <i class="fas fa-folder">
                                     </i>
                                     View
                                 </a>
-                                <a class="btn btn-danger btn-sm" onclick="document.getElementById('product-del-{{$contact->id}}').submit()">
+                                <a class="btn btn-danger btn-sm" onclick="document.getElementById('contact-del-{{$contact->id}}').submit()">
                                     <i class="fas fa-trash">
                                     </i>
                                     Delete
-                                    <form action="{{route('dashboard.contact.destroy',$contact->id)}}" id='product-del-{{$contact->id}}' method="post">
+                                    <form action="{{route('dashboard.delete-contact',$contact->id)}}" id='contact-del-{{$contact->id}}' method="post">
                                         @csrf
                                         @method('delete')
                                     </form>

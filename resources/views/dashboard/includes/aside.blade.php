@@ -10,10 +10,10 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{URL::asset('dashboardfile/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
+                <img src="{{URL::asset('dashboardfile/images/admins/'.Auth::user('admin')->photo)}}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info nav nav-pills nav-sidebar flex-column">
-                <a href="#" class="d-block">Alexander Pierce</a>
+                <a href="#" class="d-block">{{ Auth::user('admin')->name }}</a>
             </div>
         </div>
 
@@ -23,8 +23,16 @@
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
                 <li class="nav-item">
+                    <a href="{{route('dashboard.home')}}" class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Dashboard
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{route('dashboard.users.index')}}" class="nav-link">
-                        <i class="fas fa-user-friends"></i>
+                        <i class="nav-icon fas fa-user-friends"></i>
                         <p>
                             Users
                         </p>
@@ -32,7 +40,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{route('dashboard.admins.index')}}" class="nav-link">
-                        <i class="fas fa-user-shield"></i>
+                        <i class="nav-icon fas fa-user-shield"></i>
                         <p>
                             Admins
                         </p>
@@ -40,7 +48,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{route('dashboard.products.index')}}" class="nav-link">
-                        <i class="fas fa-glasses"></i>
+                        <i class="nav-icon fas fa-glasses"></i>
                         <p>
                             Products
                         </p>
@@ -48,7 +56,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="fas fa-truck"></i>
+                        <i class="nav-icon fas fa-truck"></i>
                         <p>
                             Orders
                         </p>
@@ -56,7 +64,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="fas fa-money-check"></i>
+                        <i class="nav-icon fas fa-money-check"></i>
                         <p>
                             Payment
                         </p>
@@ -64,7 +72,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="fas fa-money-bill-alt"></i>
+                        <i class="nav-icon fas fa-money-bill-alt"></i>
                         <p>
                             Sales
                         </p>
@@ -72,15 +80,15 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="fas fa-shopping-cart"></i>
+                        <i class="nav-icon fas fa-shopping-cart"></i>
                         <p>
                             Shopping Cart
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('dashboard.contact.index')}}" class="nav-link">
-                        <i class="fas fa-headset"></i>
+                    <a href="{{route('dashboard.contact')}}" class="nav-link">
+                        <i class="nav-icon fas fa-headset"></i>
                         <p>
                             Messages
                         </p>
@@ -88,7 +96,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="fab fa-blogger"></i>
+                        <i class="nav-icon fab fa-blogger"></i>
                         <p>
                             Blog
                             <i class="fas fa-angle-left right"></i>
@@ -111,7 +119,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="fas fa-cogs"></i>
+                        <i class="nav-icon fas fa-cogs"></i>
                         <p>
                             Settings
                             <i class="fas fa-angle-left right"></i>

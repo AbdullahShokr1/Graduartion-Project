@@ -21,9 +21,11 @@ Route::get('/user', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('user');
 
-Route::namespace("Dashboard")->group(function(){
-    Route::get("contact",'ContactController@create');
-});
+//Route::namespace("Dashboard")->group(function(){
+//    Route::get("contact",'ContactController@create');
+//});
+
+
 
 
 Route::namespace("Auth")->group(function(){

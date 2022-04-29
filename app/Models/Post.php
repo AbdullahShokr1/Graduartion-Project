@@ -13,7 +13,7 @@ class Post extends Model
         'title',
         'description',
         'keywords',
-        'content',
+        'mycontent',
         'category_id',
         'writer_id',
         'slug',

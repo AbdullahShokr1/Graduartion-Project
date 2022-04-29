@@ -1,4 +1,4 @@
-@include('dashboard.includes.header');
+@include('dashboard.includes.header')
 <div class="wrapper">
 
     <!-- Preloader -->
@@ -17,7 +17,7 @@
                 <a href="{{route('dashboard.home')}}" class="nav-link">Home</a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="{{route('dashboard.contact.index')}}" class="nav-link">Contact</a>
+                <a href="{{route('dashboard.contact')}}" class="nav-link">Contact</a>
             </li>
         </ul>
 
@@ -146,18 +146,15 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                     <span class="dropdown-item dropdown-header">User</span>
-                    <div class="dropdown-divider"></div>
                     <a href="#" class="dropdown-item">
                         <i class="fas fa-envelope mr-2"></i>
                         <span class="float-right text-muted text-sm">3 mins</span>
-                        <form method="POST" action="{{ route('dashboard.logout') }}">
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" onclick="document.getElementById('logout').submit()" class="dropdown-item">
+                        <i class="fas fa-envelope mr-2"> {{ __('Log Out') }} </i>
+                        <form method="POST" id="logout" action="{{ route('dashboard.logout') }}">
                             @csrf
-
-                            <x-dropdown-link :href="route('dashboard.logout')"
-                                             onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                {{ __('Log Out') }}
-                            </x-dropdown-link>
                         </form>
                     </a>
                 </div>

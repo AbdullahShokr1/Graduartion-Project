@@ -20,7 +20,8 @@ return new class extends Migration
                 $table->string('describe');
                 $table->string('price');
                 $table->string('photo');
-                $table->foreignId('writer_id')->constrained()->onDelete('cascade');
+//                $table->foreignId('writer_id')->constrained()->onDelete('cascade');
+                $table->foreignId('writer_id')->references('id')->on('admins')->onDelete('cascade');
                 $table->timestamps();
             });
         }

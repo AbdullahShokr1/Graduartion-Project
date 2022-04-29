@@ -6,12 +6,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Add Admin</h1>
+                    <h1>Add Category</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{route('dashboard.home')}}">Home</a></li>
-                        <li class="breadcrumb-item active">Admins</li>
+                        <li class="breadcrumb-item active">Categories</li>
                     </ol>
                 </div>
             </div>
@@ -26,61 +26,39 @@
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Add Admin</h3>
+                            <h3 class="card-title">Add Category</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form method="POST" action="{{ route('dashboard.admins.store')}}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('dashboard.category.store')}}">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Name</label>
-                                    <input type="text" name="name" :value="old('name')" class="form-control" id="exampleInputEmail1" placeholder="Enter name">
+                                    <label for="exampleInputEmail1">Title</label>
+                                    <input type="text" name="title" :value="old('title')" class="form-control" id="exampleInputEmail1" placeholder="Enter title">
                                 </div>
-                                @error('name')
+                                @error('title')
                                 {{$message}}
                                 @enderror
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Email address</label>
-                                    <input type="email" name="email" :value="old('email')" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                                    <label for="exampleInputEmail1">Description</label>
+                                    <input type="text" name="description" :value="old('description')" class="form-control" id="exampleInputEmail1" placeholder="Enter description">
                                 </div>
-                                @error('email')
+                                @error('description')
                                 {{$message}}
                                 @enderror
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Password</label>
-                                    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                    <label for="exampleInputPassword1">Slug</label>
+                                    <input type="text" name="slug" :value="old('slug')" class="form-control" id="exampleInputPassword1" placeholder="slug">
                                 </div>
-                                @error('password')
-                                {{$message}}
-                                @enderror
-                                <div class="form-group">
-                                    <label for="exampleInputPassword">Password Confirmation</label>
-                                    <input type="password" name="password_confirmation" class="form-control" id="exampleInputPassword" placeholder="Password Confirmation">
-                                </div>
-                                @error('password_confirmation')
-                                {{$message}}
-                                @enderror
-                                <div class="form-group">
-                                    <label for="exampleInputFile">File input</label>
-                                    <div class="input-group">
-                                        <div class="custom-file">
-                                            <input type="file" name="photo" value="{{old('photo')}}" class="custom-file-input" id="exampleInputFile">
-                                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                                        </div>
-                                        <div class="input-group-append">
-                                            <span class="input-group-text">Upload</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                @error('photo')
+                                @error('slug')
                                 {{$message}}
                                 @enderror
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Add Admin</button>
-                                <a href="{{route('dashboard.admins.index')}}" class="btn btn-danger">Cancel</a>
+                                <button type="submit" class="btn btn-primary">Add Category</button>
+                                <a href="{{route('dashboard.category.index')}}" class="btn btn-danger">Cancel</a>
                             </div>
                         </form>
                     </div>

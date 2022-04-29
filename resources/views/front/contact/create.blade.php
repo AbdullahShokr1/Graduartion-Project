@@ -1,91 +1,82 @@
-<x-backindc xmlns="http://www.w3.org/1999/html">
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Add New Product</h1>
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{route('dashboard.home')}}">Home</a></li>
-                        <li class="breadcrumb-item active">Products</li>
-                    </ol>
-                </div>
-            </div>
-        </div><!-- /.container-fluid -->
-    </section>
-<!-- Main content -->
-<section class="content">
-        <div class="container-fluid">
-            <div class="row">
-                <!-- left column -->
-                <div class="col-md-6">
-                    <!-- general form elements -->
-                    <div class="card card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">Add New Product</h3>
-                        </div>
-                        <!-- /.card-header -->
-                        <!-- form start -->
-                        <form method="POST" action="{{ route('dashboard.contact.store')}}" enctype="multipart/form-data">
-                            @csrf
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <label for="exampleInputTitle">Product Name</label>
-                                    <input type="text" name="name" :value="old('name')" class="form-control" id="exampleInputTitle" placeholder="Enter name">
-                                </div>
-                                @error('name')
-                                {{$message}}
-                                @enderror
-                                <div class="form-group">
-                                    <label for="exampleInputDescribe">Product Description</label>
-                                    <input type="email" name="email" :value="old('email')" class="form-control" id="exampleInputDescribe" placeholder="Enter Product email">
-                                </div>
-                                @error('describe')
-                                {{$message}}
-                                @enderror
-                                <div class="form-group">
-                                    <label for="exampleInputPrice">Product Price</label>
-                                    <input type="text" name="phone" :value="old('phone')" class="form-control" id="exampleInputPrice" placeholder="Enter Product phone">
-                                </div>
-                                @error('price')
-                                {{$message}}
-                                @enderror
-                                <div class="form-group">
-                                    <label for="exampleInputPrice">Product Price</label>
-                                    <input type="text" name="subject" :value="old('subject')" class="form-control" id="exampleInputPrice" placeholder="Enter Product subject">
-                                </div>
-                                @error('price')
-                                {{$message}}
-                                @enderror
-                                <div class="form-group">
-                                    <label for="exampleInputPrice">Product Price</label>
-                                    <textarea name="message"class="form-control" >{{old('message')}}</textarea>
-
-                                </div>
-                                @error('price')
-                                {{$message}}
-                                @enderror
-
-
-                            </div>
-                            <!-- /.card-body -->
-                            <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Add New Product</button>
-                                <a href="{{route('dashboard.contact.index')}}" class="btn btn-danger">Cancel</a>
-                            </div>
-                        </form>
+<x-homea>
+    <div class="space"style="height: 100px;">
+        <div class="row">
+        </div>
+    </div>
+    <div class="container pt-5 pb-5 mt-5 mb-5">
+        <div class="row mt-5 justify-content-center" >
+            @if(session('success'))
+                <div class="alert alert-success alert-dismissible" style="position: fixed;top: 100px;">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <div class="alert alert-success" role="alert">
+                        <p>{{session('success')}}</p>
                     </div>
-                    <!-- /.card -->
                 </div>
+            @endif
+
+            <div class="col-lg-8 p-5" style="box-shadow: 0 10px 30px 0 #00000078; " >
+                <div class="text-center">
+                    <h2>Contact Us</h2>
+                </div>
+                <form class="black-bg contact-form c-mb-20 c-gutter-20" method="post" action="{{route('store-contact')}}">
+                    @csrf
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="ds form-group has-placeholder">
+                                <label for="name">Full Name
+                                    <span class="required">*</span>
+                                </label>
+                                <input type="text" aria-required="true" size="30" value="{{old('name')}}" name="name" id="name" class="form-control" placeholder="Name">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="ds form-group has-placeholder">
+                                <label for="email">Email address
+                                    <span class="required">*</span>
+                                </label>
+                                <input type="email" aria-required="true" size="30" value="{{old('email')}}" name="email" id="email" class="form-control" placeholder="Email">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="ds form-group has-placeholder">
+                                <label for="phone">Phone
+                                </label>
+                                <input type="text" size="30" value="{{old('phone')}}" name="phone" id="phone" class="form-control" placeholder="Phone">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="ds form-group has-placeholder">
+                                <label for="subject">Subject
+                                    <span class="required">*</span>
+                                </label>
+                                <input type="text" aria-required="true" size="30" value="{{old('subject')}}" name="subject" id="subject" class="form-control" placeholder="Subject">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="ds form-group has-placeholder">
+                                <label for="message">Message</label>
+                                <textarea aria-required="true" rows="6" cols="4" name="message" id="message" class="form-control" placeholder="Message">{{old('message')}}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 text-center mt-10">
+                            <div class="form-group">
+                                <button type="submit" id="contact_form_submit" name="contact_submit" class="btn btn-primary btn-lg">
+                                    Send Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </section>
-<!-- /.content -->
-</div>
-</x-backindc>
+        </div>
+    </div>
+</x-homea>
 

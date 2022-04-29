@@ -14,6 +14,11 @@ class ContactController extends Controller
                 'contacts' => Contact::latest()->get(),
             ]);
     }
+    public function show($id){
+        $contact = Contact::select()->where('id',$id)->first();
+        return view('dashboard.messages.show',compact('contact'));
+        //return view('dashboard.messages.show');
+    }
 
     public function create(){
         return view('front.contact.create');
@@ -22,10 +27,10 @@ class ContactController extends Controller
     public function store(ContactRequest $request){
         Contact::create($request->validated());
 
-        return redirect()->route('dashboard.home')->with(['success'=>'Message Added Successfully']) ;
+        return redirect()->route('contact')->with(['success'=>'Message Added Successfully']) ;
     }
-    public function destroy(Contact $contact){
-        $contact->delete();
-        return redirect()->route('dashboard.contact.index')->with(['success'=>'Message Deleted Successfully']) ;
+    public function destroy(Contact $contact,$id){
+        $contact = Contact::select()->where('id',$id)->delete();
+        return redirect()->route('dashboard.contact')->with(['success'=>'User Deleted Successfully']) ;
     }
 }
