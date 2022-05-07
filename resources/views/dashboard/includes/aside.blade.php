@@ -127,13 +127,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{route('dashboard.post.index')}}" class="nav-link">
+                            <a href="{{route('dashboard.home.index')}}" class="nav-link">
                                 <i class="fas fa-file-powerpoint"></i>
                                 <p>Home Pgae</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('dashboard.category.index')}}" class="nav-link">
+                            <a href="{{route('dashboard.about.index')}}" class="nav-link">
                                 <i class="fas fa-cubes"></i>
                                 <p>About Us Page</p>
                             </a>

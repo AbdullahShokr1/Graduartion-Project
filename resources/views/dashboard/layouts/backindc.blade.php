@@ -146,13 +146,18 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                     <span class="dropdown-item dropdown-header">User</span>
+
+                    <a href="#" class="dropdown-item">
+                        <i class="ion ion-person"></i>
+                        <span class="float-right text-muted text-sm">3 mins</span>
+                    </a>
                     <a href="#" class="dropdown-item">
                         <i class="fas fa-envelope mr-2"></i>
                         <span class="float-right text-muted text-sm">3 mins</span>
                     </a>
                     <div class="dropdown-divider"></div>
                     <a href="#" onclick="document.getElementById('logout').submit()" class="dropdown-item">
-                        <i class="fas fa-envelope mr-2"> {{ __('Log Out') }} </i>
+                        <i class="fas fa-sign-out-alt"> {{ __('Log Out') }} </i>
                         <form method="POST" id="logout" action="{{ route('dashboard.logout') }}">
                             @csrf
                         </form>
