@@ -18,9 +18,8 @@ return new class extends Migration
                 $table->id();
                 $table->string('title');
                 $table->string('describe');
-                $table->string('price');
+                $table->float('price');
                 $table->string('photo');
-//                $table->foreignId('writer_id')->constrained()->onDelete('cascade');
                 $table->foreignId('writer_id')->references('id')->on('admins')->onDelete('cascade');
                 $table->timestamps();
             });

@@ -19,8 +19,6 @@ return new class extends Migration
             $table->text('description');
             $table->string('keywords');
             $table->string('mycontent');
-//            $table->foreignId('category_id')->constrained()->onDelete('cascade');
-//            $table->foreignId('writer_id')->constrained()->onDelete('cascade');
             $table->foreignId('category_id')->constrained()->references('id')->on('categories')->onDelete('cascade');
             $table->foreignId('writer_id')->constrained()->references('id')->on('admins')->onDelete('cascade');
             $table->string('slug');

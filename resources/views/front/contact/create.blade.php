@@ -1,4 +1,4 @@
-<x-homea>
+<x-homea title="Contact Us">
     <div class="space"style="height: 100px;">
         <div class="row">
         </div>

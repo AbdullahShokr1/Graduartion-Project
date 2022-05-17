@@ -52,8 +52,15 @@ class Admin extends Authenticatable
         }
         $this->attributes['password'] = bcrypt($value);
     }
+
+    ################Start Relations################
     public function product()
     {
-        return $this->hasOne(Product::class,'writer_id');
+        return $this->hasMany(Product::class,'writer_id');
     }
+    public function post(){
+        return $this->hasMany('App\Models\Post','writer_id');
+    }
+    #################End Relations#################
+
 }

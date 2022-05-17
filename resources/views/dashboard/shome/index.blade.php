@@ -40,6 +40,12 @@
                 <form>
                     <div class="card-body">
                         <div class="form-group">
+                            <div class="form-group">
+                                <label for="exampleInputFile">Logo</label>
+                                <div class="ml-2 col-sm-12">
+                                    <img src="{{ asset('front/images/home')}}/{{$shome -> logo}}" id="preview" class="img-thumbnail">
+                                </div>
+                            </div>
                             <label for="exampleInputTitle">Banner</label>
                             <input type="text" name="banner" value="{{$shome->banner}}"  class="form-control" id="exampleInputTitle" placeholder="Enter banner" disabled>
 

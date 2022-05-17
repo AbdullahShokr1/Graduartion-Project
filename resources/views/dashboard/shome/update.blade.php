@@ -33,6 +33,21 @@
                         <form method="POST" action="{{ route('dashboard.home.update',$shome->id)}}" enctype="multipart/form-data">
                             @csrf
                             @method('put')
+                            <div class="form-group">
+                                <label for="exampleInputFile">Logo</label>
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="file" name="logo" value="{{$shome->logo}}" class="custom-file-input" id="exampleInputFile">
+                                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                    </div>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">Upload</span>
+                                    </div>
+                                </div>
+                                <div class="ml-2 col-sm-12">
+                                    <img src="{{ asset('front/images/home')}}/{{$shome -> logo}}" id="preview" class="img-thumbnail">
+                                </div>
+                            </div>
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="exampleInputTitle">Banner</label>

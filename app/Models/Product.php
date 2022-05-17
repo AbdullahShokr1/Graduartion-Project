@@ -17,8 +17,16 @@ class Product extends Model
     ];
 
     /////relation with DB
+    ################Start Relations################
     public function admin()
     {
         return $this->belongsTo(Admin::class,'writer_id');
     }
+    public function cart(){
+        return $this->hasMany('App\Models\Cart','product_id');
+    }
+    public function review(){
+        return $this->hasMany('App\Models\Review','product_id');
+    }
+    #################End Relations#################
 }

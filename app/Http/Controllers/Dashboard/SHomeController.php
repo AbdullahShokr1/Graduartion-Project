@@ -28,14 +28,17 @@ class SHomeController extends Controller
 
     public function update(SHome $shome,ShomeRequest $request)
     {
-        if(($request -> banner_photo && $request -> banner1_photo) != Null){
+        if(($request -> banner_photo && $request -> banner1_photo && $request -> logo) != Null){
+            $logo = $this -> savelogo($request -> logo,'front/images/home');
             $file_name = $this -> saveImages($request -> banner_photo,'front/images/home');
             $file1_name = $this -> saveImages1($request -> banner1_photo,'front/images/home');
         }else{
+            $logo= $shome -> logo;
             $file_name = $shome -> banner_photo;
             $file1_name = $shome -> banner1_photo;
         }
-        $my_shome = [
+        $shome->query()->where('id',1)->first()->update([
+            'logo'=> $logo,
             'banner'=> $request -> banner,
             'banner_description'=> $request -> banner_description,
             'banner_photo'=> $file_name,
@@ -46,9 +49,7 @@ class SHomeController extends Controller
             'social2'=> $request -> social2,
             'social3'=> $request -> social3,
             'social4'=> $request -> social4,
-        ];
-
-        SHome::query()->where('id',1)->first()->update($my_shome,$request->validated());
+        ],$request->validated());
 
         return redirect()->route('dashboard.home.index')->with(['success'=>'Post Updated Successfully']) ;
     }
@@ -64,6 +65,14 @@ class SHomeController extends Controller
     {
         $file_ex = $photo->getClientOriginalExtension();
         $file_name = time() . 'a.' . $file_ex;
+        $path = $folder;
+        $photo->move($path, $file_name);
+        return $file_name;
+    }
+    protected function savelogo($photo,$folder)
+    {
+        $file_ex = $photo->getClientOriginalExtension();
+        $file_name = time() . '-logo.' . $file_ex;
         $path = $folder;
         $photo->move($path, $file_name);
         return $file_name;

@@ -24,6 +24,7 @@ class ShomeRequest extends FormRequest
     public function rules()
     {
         return [
+            'logo' => 'nullable',
             'banner' => 'required|string|max:70',
             'banner_description' => 'required|string|max:155',
             'banner_photo' => 'nullable',

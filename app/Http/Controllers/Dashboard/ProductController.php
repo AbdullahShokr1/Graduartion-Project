@@ -10,6 +10,10 @@ use App\Http\Requests\UpdateProductRequest;
 
 class ProductController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:admin')->except('show');
+    }
     public function index()
     {
         return view("dashboard.products.index",[
@@ -44,11 +48,6 @@ class ProductController extends Controller
         Product::create($my_product,$request->validated());
 
         return redirect()->route('dashboard.products.index')->with(['success'=>'Product Added Successfully']) ;
-    }
-
-    public function show(Product $product)
-    {
-        return view("dashboard.products.show",compact('product'));
     }
 
     public function edit(Product $product)
@@ -87,5 +86,12 @@ class ProductController extends Controller
         $path = $folder;
         $photo->move($path, $file_name);
         return $file_name;
+    }
+
+    public function show($id)
+    {
+        $product = Product::query()->where('id','=',$id)->find($id);
+
+        return view("front.product",compact('product'));
     }
 }

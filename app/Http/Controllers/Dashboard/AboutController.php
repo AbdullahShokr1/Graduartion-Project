@@ -51,7 +51,7 @@ class AboutController extends Controller
     public function update(About $about,AboutRequest $request)
     {
         if(($request -> photo) != Null){
-            $file_name = $this -> saveImages($request -> photo,'front/images/posts');
+            $file_name = $this -> saveImages($request -> photo,'front/images/about');
         }else{
             $file_name = $about -> photo;
         }

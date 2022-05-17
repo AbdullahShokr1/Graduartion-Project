@@ -9,6 +9,7 @@ class SHome extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'logo',
         'banner',
         'banner_description',
         'banner_photo',

@@ -183,12 +183,7 @@
 
                         <div class="col-lg-12 loginbttm">
                             <div class="col-lg-6 login-btm login-text">
-                                @error('email')
-                                    {{$message}}
-                                @enderror
-                                @error('password')
-                                    {{$message}}
-                                @enderror
+
                             </div>
                             <div class="col-lg-6 login-btm login-button">
                                 <button type="submit" class="btn btn-outline-primary">LOGIN</button>

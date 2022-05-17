@@ -1,10 +1,10 @@
 <?php
 
+use App\Http\Controllers\Dashboard\AboutController;
 use App\Http\Controllers\Dashboard\AdminsController;
 use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\PostController;
 use App\Http\Controllers\Dashboard\ProductController;
-use App\Http\Controllers\Dashboard\SHomeController;
 use App\Http\Controllers\Dashboard\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,10 +24,9 @@ Route::namespace("Dashboard")->prefix("dashboard")->name("dashboard.")->group(fu
         Route::get("/","DashboardController@index")->name('home');
         Route::resource("users",UsersController::class);
         Route::resource("admins",AdminsController::class);
-        Route::resource("products",ProductController::class);
+        Route::resource("products",ProductController::class,['except' => [ 'show' ]]);
         Route::resource("category", CategoryController::class);
         Route::resource('post', PostController::class);
-//        Route::resource('/settings/home', SHomeController::class);
         ///Start Home Page setting Route
         Route::get('/settings/home', 'SHomeController@index')->name('home.index');
         Route::get('/settings/home/edit', 'SHomeController@edit')->name('home.edit');
@@ -38,11 +37,19 @@ Route::namespace("Dashboard")->prefix("dashboard")->name("dashboard.")->group(fu
         Route::get("contact","ContactController@index")->name('contact');
         Route::get("contact/{id}","ContactController@show")->name('show-message');
         Route::delete("contact/delete/{id}","ContactController@destroy")->name('delete-contact');
-        //Route::get("contact","ContactController@show")->name('mycontact');
-        //Route::get("contact/{id}","ContactController@showdetial")->name('showmessg');
-        //Route::get("contact/delete/{id}","ContactController@destroy")->name('delcontact');
-        //Route::get("candidate","CandidateController@show")->name('mycandidate');
-        //Route::get("candidate/delete/{id}","CandidateController@destroy")->name('delcandidate');
+        //Follower  just here show & delete Followers
+        Route::get("follow","FollowController@index")->name('follow');
+        Route::delete("follow/delete/{id}","FollowController@destroy")->name('delete-follow');
+        /// Start Order Route
+        Route::get("order","OrderController@index")->name('order');
+        Route::delete("order/delete/{id}","OrderController@destroy")->name('order-del');
+        ///End Order Route
+        ////######################Start Route for Cart in Dashboard##########################
+        Route::get('cart', 'CartController@show_all')->name('cart');
+        Route::delete('cart/delete/{id}', 'CartController@delete')->name('cart.delete');
+        Route::get('cart/delete/all', 'CartController@deleteall')->name('cart.deleteall');
+        ////######################End Route for Cart in Dashboard############################
+
     });
 });
 
@@ -50,5 +57,19 @@ Route::namespace("Dashboard")->group(function(){
     //Contact us just here to create & store data of messages in DB
     Route::get("contact","ContactController@create")->name('contact');
     Route::post("contact","ContactController@store")->name('store-contact');
+    //Follow us just here to create & store data of followers in DB
+    Route::post("follow","FollowController@store")->name('store-follow');
+    /// Start Order Route
+    Route::get("order","OrderController@create")->name('order');
+    Route::post("order","OrderController@store")->name('order-store');
+    ///End Order Route
+    /// Start More info Route
+//    Route::middleware(['auth'])->group(function(){
+//        Route::get('/profile/create/','MoreInfoController@create')->name('profile.create');
+//        Route::post('/profile/store/','MoreInfoController@store')->name('profile.store');
+//        Route::get('/profile/edit/{id}','MoreInfoController@edit')->name('profile.edit');
+//        Route::post('/profile/update/{id}','MoreInfoController@update')->name('profile.update');
+//    });
+    ///End More info Route
 });
 require __DIR__.'/admin.php';

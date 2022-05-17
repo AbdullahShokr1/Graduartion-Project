@@ -2,11 +2,13 @@
 
 namespace App\View\Components;
 
+use App\Models\SHome;
 use Illuminate\View\Component;
 
 class Homea extends Component
 {
     public $title;
+    public $my_home;
     /**
      * Create a new component instance.
      *
@@ -15,6 +17,8 @@ class Homea extends Component
     public function __construct($title = null)
     {
         $this->title =$title;
+        $my_home = SHome::query()->where('id','=',1)->find(1);
+        $this->my_home = $my_home;
     }
 
     /**

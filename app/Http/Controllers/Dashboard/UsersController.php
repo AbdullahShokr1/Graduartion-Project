@@ -12,7 +12,7 @@ class UsersController extends Controller
 {
     public function index(){
         return view('dashboard.users.index',[
-            'users' =>User::latest()->get(),
+            'users' =>User::get(),
         ]);
     }
     public function create(){

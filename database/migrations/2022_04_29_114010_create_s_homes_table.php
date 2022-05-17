@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('s_homes', function (Blueprint $table) {
             $table->id();
+            $table->string('logo')->nullable()->default('logo');
             $table->string('banner');
             $table->string('banner_description')->nullable();
             $table->string('banner_photo')->nullable();

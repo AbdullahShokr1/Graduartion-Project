@@ -55,7 +55,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{route('dashboard.order')}}" class="nav-link">
                         <i class="nav-icon fas fa-truck"></i>
                         <p>
                             Orders
@@ -79,7 +79,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{route('dashboard.cart')}}" class="nav-link">
                         <i class="nav-icon fas fa-shopping-cart"></i>
                         <p>
                             Shopping Cart
@@ -91,6 +91,14 @@
                         <i class="nav-icon fas fa-headset"></i>
                         <p>
                             Messages
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('dashboard.follow')}}" class="nav-link">
+                        <i class="nav-icon fas fa-user-plus"></i>
+                        <p>
+                            Followers
                         </p>
                     </a>
                 </li>

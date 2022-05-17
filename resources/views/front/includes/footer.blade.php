@@ -29,10 +29,11 @@
         <div class="row justify-content-center">
             <div class="col-12 col-md-10 col-lg-8 col-xl-6">
                 <h5 class="mb-4 text-center text-white">Want style Ideas and Treats?</h5>
-                <form class="mb-5">
+                <form class="mb-5" method="POST" action="{{ route('store-follow')}}">
+                @csrf
                     <div class="form-row ">
                         <div class="col">
-                            <input type="email" class="form-control form-control-gray-700 form-control-lg"
+                            <input type="email" name="email" class="form-control form-control-gray-700 form-control-lg"
                                    placeholder="Enter Email *">
                         </div>
                         <div class="col-auto">
@@ -40,7 +41,6 @@
                         </div>
                     </div>
                 </form>
-
             </div>
         </div>
         <div class="row">
@@ -108,74 +108,43 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row ">
-        <div class="col-md text-center">
-            <p>
-                Copyright ©2022 All rights reserved
+        <div class="row ">
+            <div class="col-md text-center">
+                <p>
+                    Copyright ©2022 All rights reserved
 
-            </p>
+                </p>
+            </div>
+            <ul class="col-md-12 text-center">
+                <a href="https://{{$my_home->social1}}"><i class="fab fa-facebook text-muted"></i></a>
+                <a href="https://{{$my_home->social2}}"><i class="fab fa-twitter text-muted"></i></a>
+                <a href="https://{{$my_home->social3}}"><i class="fab fa-instagram text-muted"></i></a>
+                <a href="https://{{$my_home->social4}}"><i class="fab fa-instagram text-muted"></i></a>
+            </ul>
         </div>
-        <ul class="col-md-12 text-center">
-
-            <a href=""><i class="fab fa-facebook text-muted"></i></a>
-            <a href=""><i class="fab fa-twitter text-muted"></i></a>
-            <a href=""><i class="fab fa-instagram text-muted"></i></a>
-        </ul>
     </div>
+
 </section>
 
 <!-- end footer-->
 <!-- start scroll to top-->
-<button class="btn btn-warning" onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa fa-arrow-up"
-                                                                                        aria-hidden="true"></i></button>
-<script>
-    var mybutton = document.getElementById("myBtn");
-
-    window.onscroll = function () { scrollFunction() };
-
-    function scrollFunction() {
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            mybutton.style.display = "block";
-        } else {
-            mybutton.style.display = "none";
-        }
-    }
-    function topFunction() {
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
-    }
-</script>
-<script>
-    var nav = document.querySelector('nav');
-    window.addEventListener('scroll', function () {
-        if (window.pageYOffset > 100) {
-            nav.classList.add('bg-dark', 'shadow');
-        }
-        else {
-            nav.classList.remove('bg-dark', 'shadow');
-        }
-    });
-</script>
-<script>
-    // Add active class to the current button (highlight it)
-    var header = document.getElementById("myDIV");
-    var btns = header.getElementsByClassName("btn");
-    for (var i = 0; i < btns.length; i++) {
-        btns[i].addEventListener("click", function () {
-            var current = document.getElementsByClassName("active");
-            current[0].className = current[0].className.replace(" active", "");
-            this.className += " active";
-        });
-    }
-</script>
+<button class="btn btn-warning" onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
+<section class="progress-wrap">
+    <svg  class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+    </svg>
+</section>
 <!-- end scroll to top-->
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src='{{ asset('front/js//jquery.min.js') }}'></script>
 <script src="{{URL::asset('front/js/all.js')}}"></script>
-<script src="{{URL::asset('front/js/jquery-3.5.1.slim.min.js')}}"></script>
+{{--<script src="{{URL::asset('front/js/jquery-3.5.1.slim.min.js')}}"></script>--}}
 <script src="{{URL::asset('front/js/popper.min.js')}}"></script>
+<script src="{{ asset('front/js/fontawesome.min.js') }}"></script>
 <script src="{{URL::asset('front/js/bootstrap.min.js')}}"></script>
+<script src="{{URL::asset('front/js/owl.carousel.min.js')}}"></script>
+<script src="{{URL::asset('front/js/main.js')}}"></script>
 </body>
 
 </html>

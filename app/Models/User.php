@@ -51,4 +51,16 @@ class User extends Authenticatable
         }
         $this->attributes['password'] = bcrypt($value);
     }
+
+    ################Start Relations################
+    public function more_info(){
+        return $this->hasOne('App\Models\Moreinfo','user_id');
+    }
+    public function cart(){
+        return $this->hasOne('App\Models\Cart','user_id');
+    }
+    public function review(){
+        return $this->hasMany('App\Models\Review','user_id');
+    }
+    #################End Relations#################
 }

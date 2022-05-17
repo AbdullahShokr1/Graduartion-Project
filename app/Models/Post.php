@@ -19,4 +19,13 @@ class Post extends Model
         'slug',
         'photo',
     ];
+    ################Start Relations################
+    public function admin()
+    {
+        return $this->belongsTo('App\Models\Admin','writer_id');
+    }
+    public function category(){
+        return $this-> belongsTo('App\Models\Category','category_id');
+    }
+    #################End Relations#################
 }
