@@ -49,6 +49,8 @@ Route::namespace("Dashboard")->prefix("dashboard")->name("dashboard.")->group(fu
         Route::delete('cart/delete/{id}', 'CartController@delete')->name('cart.delete');
         Route::get('cart/delete/all', 'CartController@deleteall')->name('cart.deleteall');
         ////######################End Route for Cart in Dashboard############################
+        Route::get('review', 'ReviewsController@index')->name('review');
+        Route::delete('review/{id}/delete', 'ReviewsController@destroy')->name('review.delete');
 
     });
 });
@@ -63,13 +65,5 @@ Route::namespace("Dashboard")->group(function(){
     Route::get("order","OrderController@create")->name('order');
     Route::post("order","OrderController@store")->name('order-store');
     ///End Order Route
-    /// Start More info Route
-//    Route::middleware(['auth'])->group(function(){
-//        Route::get('/profile/create/','MoreInfoController@create')->name('profile.create');
-//        Route::post('/profile/store/','MoreInfoController@store')->name('profile.store');
-//        Route::get('/profile/edit/{id}','MoreInfoController@edit')->name('profile.edit');
-//        Route::post('/profile/update/{id}','MoreInfoController@update')->name('profile.update');
-//    });
-    ///End More info Route
 });
 require __DIR__.'/admin.php';

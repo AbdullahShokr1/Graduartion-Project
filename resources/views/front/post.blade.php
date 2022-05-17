@@ -1,109 +1,37 @@
-<x-homea title="Category">
+<x-homea title="Blog-{{$post->title}}">
     <!--start content-->
-    <!--# Start The Content-->
     <!--# Start Post Content-->
-    <section id='post-content'>
-        <section class="py-5 space"></section>
-        <section class="my-title">
-            <h1></h1>
-        </section>
-        <section id='Categories-Page' class='py-5'>
-            <section class="container">
-                <section class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-3">
-                    <section class="col">
-                        <section class="card text-dark bg-light m-auto" >
-                            <section class="card-header text-center">Header</section>
-                            <section class="card-body">
-{{--                                @foreach($posts as $mypost)--}}
-{{--                                    <h1>{{ $mypost->title}}</h1>--}}
-{{--                                    @foreach ($mypost->schema as $property)--}}
-{{--                                        <b>{{ $property['key'] }}</b>: {{ $property['value'] }}<br />--}}
-{{--                                    @endforeach--}}
-{{--                                @endforeach--}}
-                            </section>
-                        </section>
-                    </section>
+    <div class="container-fluid text-center bg-light" style="margin-top: 6rem;">
+        <div class="d-flex align-items-center justify-content-center">
+            <div class="pt-3">
+                <h4>Blog</h4>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-center">
+                        <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('blog')}}">Blog</a></li>
+                        <li class="breadcrumb-item"><a>post</a></li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
 
-                    <section class="col">
-                        <section class="card text-dark bg-light m-auto" >
-                            <section class="card-header text-center">Header</section>
-                            <section class="card-body">
-                                <ul class="list-group">
-                                    <li class="list-group-item active" aria-current="true" >An item</li>
-                                    <li class="list-group-item">A second item</li>
-                                    <li class="list-group-item">A third item</li>
-                                    <li class="list-group-item">A fourth item</li>
-                                    <li class="list-group-item">And a fifth one</li>
-                                </ul>
-                            </section>
-                        </section>
-                    </section>
+    <div class="container mt-5 mb-3 ">
+        <div class="row">
+            <div class="col-md-12">
 
-                    <section class="col">
-                        <section class="card text-dark bg-light m-auto" >
-                            <section class="card-header text-center">Header</section>
-                            <section class="card-body">
-                                <ul class="list-group">
-                                    <li class="list-group-item active" aria-current="true" >An item</li>
-                                    <li class="list-group-item">A second item</li>
-                                    <li class="list-group-item">A third item</li>
-                                    <li class="list-group-item">A fourth item</li>
-                                    <li class="list-group-item">And a fifth one</li>
-                                </ul>
-                            </section>
-                        </section>
-                    </section>
-
-                    <section class="col">
-                        <section class="card text-dark bg-light m-auto">
-                            <section class="card-header text-center">Header</section>
-                            <section class="card-body">
-                                <ul class="list-group">
-                                    <li class="list-group-item active" aria-current="true" >An item</li>
-                                    <li class="list-group-item">A second item</li>
-                                    <li class="list-group-item">A third item</li>
-                                    <li class="list-group-item">A fourth item</li>
-                                    <li class="list-group-item">And a fifth one</li>
-                                </ul>
-                            </section>
-                        </section>
-                    </section>
-
-                    <section class="col">
-                        <section class="card text-dark bg-light m-auto" >
-                            <section class="card-header text-center">Header</section>
-                            <section class="card-body">
-                                <ul class="list-group">
-                                    <li class="list-group-item active" aria-current="true" >An item</li>
-                                    <li class="list-group-item">A second item</li>
-                                    <li class="list-group-item">A third item</li>
-                                    <li class="list-group-item">A fourth item</li>
-                                    <li class="list-group-item">And a fifth one</li>
-                                </ul>
-                            </section>
-                        </section>
-                    </section>
-
-                    <section class="col">
-                        <section class="card text-dark bg-light m-auto" >
-                            <section class="card-header text-center">Header</section>
-                            <section class="card-body">
-                                <ul class="list-group">
-                                    <li class="list-group-item active" aria-current="true" >An item</li>
-                                    <li class="list-group-item">A second item</li>
-                                    <li class="list-group-item">A third item</li>
-                                    <li class="list-group-item">A fourth item</li>
-                                    <li class="list-group-item">And a fifth one</li>
-                                </ul>
-                            </section>
-                        </section>
-                    </section>
-
-                </section>
-            </section>
-        </section>
-    </section>
+                <div class="card shadow">
+                    <img src="{{asset('front/images/posts/'.$post->photo)}}" class="card-img-top border" alt="..."
+                         height="480">
+                    <a href="#" class="blog_item_date bg-info text-decoration-none"><h3>{{$post->updated_at->diffForHumans()}}</h3>  </a>
+                </div>
+                <div class="card-body" style="line-height: 2;">
+                    <h3 class="text-info text-center">{{$post->title}}</h3>
+                    <p class="card-text">{{$post->mycontent}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
     <!--# End Post Content-->
-    <!--# End The Content-->
     <!--end content-->
 </x-homea>

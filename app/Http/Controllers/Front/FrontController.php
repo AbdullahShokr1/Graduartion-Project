@@ -40,13 +40,6 @@ class FrontController extends Controller
             'products' => Product::get(),
         ]);
     }
-    public function blog()
-    {
-        return view("front.blog",[
-            'posts' => Post::get(),
-            'categories'=> Category::query()->get(),
-        ]);
-    }
     public function about()
     {
         return view("front.about",[
@@ -65,4 +58,38 @@ class FrontController extends Controller
         $myuser = User::with('more_info')->find($user_id);
         return view("front.cart",compact('myuser'));
     }
+    ################################Start##################################
+    ////Controller For Blog =>> Post and Category
+    public function blog()
+    {
+        return view("front.blog",[
+            'post' => Post::where('id','=',1)->find(1),
+            'posts' => Post::inRandomOrder()->limit(4)->get(),
+            'categories'=> Category::query()->get(),
+        ]);
+    }
+    public function category()
+    {
+        return view("front.category",[
+            'categories'=> Category::with('post')->get(),
+        ]);
+    }
+    public function categoryPage($slug){
+        $category_id= Category::where('slug','=',$slug)->first();
+        $category_id= $category_id->id;
+        return view("front.category-page",[
+            'posts'=> Post::with('category')->where('category_id','=',$category_id)->get(),
+        ],compact('slug'));
+    }
+    public function post($slug){
+        $post = Post::with('category')->where('slug','=',$slug)->first();
+        return view("front.post",compact('post'));
+    }
+    ################################End##################################
+//    public function product()
+//    {
+//        return view("front.shop",[
+//            'products' => Product::query()->whereDoesntHave('cart')->paginate(12),
+//        ]);
+//    }
 }

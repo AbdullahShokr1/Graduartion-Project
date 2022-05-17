@@ -63,18 +63,10 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{route('dashboard.review')}}" class="nav-link">
                         <i class="nav-icon fas fa-money-check"></i>
                         <p>
-                            Payment
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-money-bill-alt"></i>
-                        <p>
-                            Sales
+                            Reviews
                         </p>
                     </a>
                 </li>

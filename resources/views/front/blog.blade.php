@@ -13,37 +13,58 @@
             </div>
         </div>
     </div>
-
-    <div class="container mt-5 mb-5 ">
+    <div class="container mt-5">
         <div class="row">
-            @foreach($posts as $post)
-                <div class="col-md-8 mt-5 mلا-5">
-                    <div class="card shadow">
-                        <img src="img/istockphoto-1322879438-612x612.jpg" class="card-img-top border" alt="..." height="480">
-                        <a href="#" class="blog_item_date bg-info text-decoration-none">
-                            <h3>13</h3>
-                            <p>Mar</p>
-                        </a>
-                        <div class="card-body ">
-                            <a class="d-inline-block text-decoration-none" href="post.html">
-                                <h3 class="blog-head">- Top New Trends in Suburban High Fashion</h3>
-                            </a>
-                            <p class="card-text">That dominion stars lights dominion divide years for fourth have don't
-                                stars is that he earth it first without heaven in place seed it second morning saying..</p>
+            <!-- Blog entries-->
+            <div class="col-lg-8">
+                <!-- Featured blog post-->
+                <div class="card mb-4">
+                    <a href="{{route('post',$post->slug)}}"><img class="card-img-top" src="{{asset('front/images/posts/'.$post->photo)}}" alt="..." /></a>
+                    <div class="card-body">
+                        <div class="small text-muted">{{$post->updated_at->diffForHumans()}}</div>
+                        <h2 class="card-title">{{$post->title}}</h2>
+                        <p class="card-text">{{\Illuminate\Support\Str::limit($post->description, 60, '.....')}}</p>
+                        <a class="btn btn-primary" href="{{route('post',$post->slug)}}">Read more →</a>
+                    </div>
+                </div>
+                <!-- Nested row for non-featured blog posts-->
+                <div class="row">
+
+                    @foreach($posts as $post)
+                        <div class="col-lg-6">
+                            <!-- Blog post-->
+                            <div class="card mb-4">
+                                <a href="{{route('post',$post->slug)}}"><img class="card-img-top" src="{{asset('front/images/posts/'.$post->photo)}}" alt="..." /></a>
+                                <div class="card-body">
+                                    <div class="small text-muted">{{$post->updated_at->diffForHumans()}}</div>
+                                    <h2 class="card-title h4">{{$post->title}}</h2>
+                                    <p class="card-text">{{\Illuminate\Support\Str::limit($post->description, 60, '.....')}}</p>
+                                    <a class="btn btn-primary" href="{{route('post',$post->slug)}}">Read more →</a>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+
+                </div>
+            </div>
+            <!-- Side widgets-->
+            <div class="col-lg-4">
+                <!-- Categories widget-->
+                <div class="card mb-4">
+                    <a class="card-header" href="{{route('category')}}">Categories</a>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <ul class="list-unstyled mb-0">
+                                    @foreach($categories as $category)
+                                        <li><a href="{{route('category.page',$category->slug)}}" >{{$category->title}}</a></li>
+                                    @endforeach
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-            @endforeach
-                <div class="col-md-3 mt-5 ml-5">
-                    <div class="mb-4 ml-4">
-                        <h4>Category </h4>
-                    </div>
-                    <div class="list-group">
-                        @foreach($categories as $category)
-                            <a href="#" class="list-group-item list-group-item-action">{{$category->title}}</a>
-                        @endforeach
-                    </div>
-                </div>
+            </div>
         </div>
     </div>
     <!--end content-->

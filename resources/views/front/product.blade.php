@@ -55,322 +55,139 @@
                     bike, shopping or in the nightlife.</p>
             </div>
         </div>
-        <div class="row mt-4">
-            <div class="d-flex">
-                <div class="text-center"><img class="review-image" src="img/IMG_0598.jpg"><span
-                        class="text-uppercase text-muted">Dec 2018</span></div>
-                <div>
-                    <div class=" col-8 ml-5">
-                        <h5 class="mt-2 mb-1">Mohamed Gaber</h5>
-                        <div class="mb-2">
-                            <div class="rating" style="color: #ffd814;">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                                <i class="fas fa-star-half-alt"></i>
+        @foreach($review as $myReview)
+            <div class="row mt-4">
+                <div class="d-flex">
+                    <div class="text-center"><img class="review-image" src="{{asset('front/images/users/'.$myReview->user->photo)}}">
+                        <span class="text-uppercase text-muted">{{$myReview->created_at}}</span></div>
+                    <div>
+                        <div class=" col-8 ml-5">
+                            <h5 class="mt-2 mb-1">{{$myReview->user->name}}</h5>
+                            <div class="mb-2">
+                                <div class="rating" style="color: #ffd814;">
+                                    @switch($myReview->review)
+                                        @case(1)
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star-half-alt"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                        @break
+                                        @case(2)
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        @break
+                                        @case(3)
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                            <i class="far fa-star"></i>
+                                        @break
+                                        @case(4)
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                        @break
+                                        @case(5)
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        @break
+                                    @endswitch
+                                </div>
                             </div>
+                            <p class="text-muted">{{$myReview->comment}}</p>
                         </div>
-                        <p class="text-muted">One morning, when Gregor Samsa woke from troubled dreams, he found himself
-                            transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he
-                            lifted
-                            his head a little he could see his brown belly, slightly domed and divided by arches into
-                            stiff
-                            sections</p>
                     </div>
                 </div>
             </div>
-
-
-        </div>
-        <hr>
-        <div class="row mt-4">
-            <div class="d-flex">
-                <div class="text-center"><img class="review-image" src="img/zz.jpg"><span
-                        class="text-uppercase text-muted">Dec 2018</span></div>
-                <div>
-                    <div class=" col-8 ml-5">
-                        <h5 class="mt-2 mb-1">Zyad Hossam</h5>
-                        <div class="mb-2">
-                            <div class="rating" style="color: #ffd814;">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                        </div>
-                        <p class="text-muted">The bedding was hardly able to cover it and seemed ready to slide off any
-                            moment. His many legs, pitifully thin compared with the size of the rest of him, waved about
-                            helplessly as he looked. &quot;What's happened to me?&quot; he thought. It wasn't a dream.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-        <hr>
-
-        <div class="row mt-4">
-            <div class="d-flex">
-                <div class="text-center"><img class="review-image" src="img/photo_2022-04-27_00-11-33.jpg"><span
-                        class="text-uppercase text-muted">Dec 2018</span></div>
-                <div>
-                    <div class=" col-8 ml-5">
-                        <h5 class="mt-2 mb-1">Abdullah Shokr</h5>
-                        <div class="mb-2">
-                            <div class="rating" style="color: #ffd814;">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                        </div>
-                        <p class="text-muted">Samsa was a travelling salesman - and above it there hung a picture that
-                            he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-        <hr>
-        <div class="row mt-4">
-            <div class="d-flex">
-                <div class="text-center"><img class="review-image" src="img/photo_2022-04-27_00-44-52.jpg"><span
-                        class="text-uppercase text-muted">Dec 2018</span>
-                </div>
-                <div>
-                    <div class=" col-8 ml-5">
-                        <h5 class="mt-2 mb-1">Sara Mostafa</h5>
-                        <div class="mb-2">
-                            <div class="rating" style="color: #ffd814;">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                        </div>
-                        <p class="text-muted">His room, a proper human room although a little too small, lay peacefully
-                            between its four familiar walls. A collection of textile samples lay spread out on the
-                            table.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-        <hr>
-        <div class="row mt-4">
-            <div class="d-flex">
-                <div class="text-center"><img class="review-image" src="img/photo_2022-04-27_00-12-26.jpg"><span
-                        class="text-uppercase text-muted">Dec 2018</span></div>
-                <div>
-                    <div class=" col-8 ml-5">
-                        <h5 class="mt-2 mb-1">Aya-M-Fouda</h5>
-                        <div class="mb-2">
-                            <div class="rating" style="color: #ffd814;">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                        <p class="text-muted">The bedding was hardly able to cover it and seemed ready to slide off any
-                            moment. His many legs, pitifully thin compared with the size of the rest of him, waved about
-                            helplessly as he looked. &quot;What's happened to me?&quot; he thought. It wasn't a dream.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-        <hr>
-
+            <hr>
+        @endforeach
     </div>
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-8">
-                <h4 class="mb-4">Leave a review</h4>
-                <form class="mb-4 form text-muted">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="mb-4"><label class="form-label" for="name">Your name *</label><input
-                                    name="name" placeholder="Enter your name" required="" type="text" id="name"
-                                    class="form-control"></div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="mb-4"><label class="form-label" for="rating">Your rate *</label><select
-                                    name="rating" class="focus-shadow-0 form-control" id="rating">
-                                    <option value="5">★★★★★ (5/5)</option>
-                                    <option value="4">★★★★☆ (4/5)</option>
-                                    <option value="3">★★★☆☆ (3/5)</option>
-                                    <option value="2">★★☆☆☆ (2/5)</option>
-                                    <option value="1">★☆☆☆☆ (1/5)</option>
-                                </select></div>
-                        </div>
-                    </div>
-                    <div class="mb-4"><label class="form-label" for="email">Your e-mail *</label><input name="email"
-                                                                                                        placeholder="Enter your email" required="" type="email" id="email" class="form-control">
-                    </div>
-                    <div class="mb-4"><label class="form-label" for="review">Review text *</label><input rows="4"
-                                                                                                         name="review" placeholder="Enter your review" required="" type="textarea" id="review"
-                                                                                                         class="form-control"></div>
-                    <button type="submit" class="btn btn-outline-dark">Post review</button>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <div class="container mt-5 mb-5">
-        <div class="text-center mb-5">
-            <h4>YOU MIGHT ALSO LIKE</h4>
-        </div>
-        <div class="row">
-            <div class="col-md mb-5">
-                <div class="card" style="z-index: 1;">
-                    <div style="z-index: 1; overflow: hidden;">
-                        <img src="img/istockphoto-585487906-612x612.jpg" class="card-img-top zoom" alt="...">
-                    </div>
-                    <div class="card-body">
-                        <div class=" d-flex justify-content-between align-items-center">
-                            <div class="review">
-                                <div class="rating" style="color: #ffd814;">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
+    @if(Auth::user('user'))
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-md-8">
+                    <h4 class="mb-4">Leave a review</h4>
+                    @if($check)
+                        <!--From For Update Review-->
+                        <form class="mb-4 form text-muted" method="POST" action="{{ route('review.update',$product->id)}}" >
+                            @csrf
+                            @method('put')
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="mb-4"><label class="form-label" for="name">Your name *</label>
+                                        <input class="form-control" value="{{Auth::user('user')->name}}" readonly>
+                                        <input name="user_id" required="" type="text" id="name" value="{{Auth::user('user')->id}}" hidden>
+                                    </div>
                                 </div>
-                                <p>(120 Review)</p>
-                            </div>
-                            <div class="price"> $50 </div>
-                        </div>
-                        <div>
-                            <button type="button" class="btn btn-dark" style="width: 100%;">live view</button>
-
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-md">
-                <div class="card " style="z-index: 1;">
-                    <div style="z-index: 1; overflow: hidden;">
-                        <img src="img/istockphoto-1049035462-612x612.jpg" class="card-img-top zoom" alt="...">
-                    </div>
-                    <div class="card-body">
-                        <div class=" d-flex justify-content-between align-items-center">
-                            <div class="review">
-                                <div class="rating" style="color: #ffd814;">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
+                                <div class="col-sm-6">
+                                    <div class="mb-4"><label class="form-label" for="rating">Your rate *</label>
+                                        <select name="review" class="focus-shadow-0 form-control" id="review">
+                                            <option value="5">★★★★★ (5/5)</option>
+                                            <option value="4">★★★★☆ (4/5)</option>
+                                            <option value="3">★★★☆☆ (3/5)</option>
+                                            <option value="2">★★☆☆☆ (2/5)</option>
+                                            <option value="1">★☆☆☆☆ (1/5)</option>
+                                        </select>
+                                    </div>
                                 </div>
-                                <p>(120 Review)</p>
                             </div>
-                            <div class="price"> $50 </div>
-                        </div>
-                        <div>
-                            <button type="button" class="btn btn-dark" style="width:100%;"> view</button>
-
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-md">
-                <div class="card " style="z-index: 1;">
-                    <div style="z-index: 1; overflow: hidden;">
-                        <img src="img/istockphoto-486548532-612x612.jpg" class="card-img-top zoom" alt="...">
-                    </div>
-                    <div class="card-body">
-                        <div class=" d-flex justify-content-between align-items-center">
-                            <div class="review">
-                                <div class="rating" style="color: #ffd814;">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
+                            <div class="mb-4"><label class="form-label" for="email">Your e-mail *</label>
+                                <input class="form-control" value="{{Auth::user('user')->email}}" readonly>
+                                <input name="product_id" required="" type="text" id="product_id" value="{{$product->id}}" hidden>
+                            </div>
+                            <div class="mb-4"><label class="form-label" for="review">Review text *</label>
+                                <input rows="4" name="comment" value="{{old('comment')}}" placeholder="Enter your review" required="" type="textarea" id="comment" class="form-control">
+                            </div>
+                            <button type="submit" class="btn btn-outline-dark">Post review</button>
+                        </form>
+                    @else
+                        <!--From For Create Review-->
+                        <form class="mb-4 form text-muted" method="POST" action="{{ route('review.store',$product->id)}}" >
+                            @csrf
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="mb-4"><label class="form-label" for="name">Your name *</label>
+                                        <input class="form-control" value="{{Auth::user('user')->name}}" readonly>
+                                        <input name="user_id" required="" type="text" id="name" value="{{Auth::user('user')->id}}" hidden>
+                                    </div>
                                 </div>
-                                <p>(120 Review)</p>
-                            </div>
-                            <div class="price"> $50 </div>
-                        </div>
-                        <div>
-                            <button type="button" class="btn btn-dark" style="width: 100%;"> view</button>
-
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-md ">
-                <div class="card" style="z-index: 1;">
-                    <div style="z-index: 1; overflow: hidden;">
-                        <img src="img/istockphoto-1215748975-612x612.jpg" class="card-img-top zoom" alt="...">
-                    </div>
-                    <div class="card-body">
-                        <div class=" d-flex justify-content-between align-items-center">
-                            <div class="review">
-                                <div class="rating" style="color: #ffd814;">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
+                                <div class="col-sm-6">
+                                    <div class="mb-4"><label class="form-label" for="rating">Your rate *</label>
+                                        <select name="review" class="focus-shadow-0 form-control" id="review">
+                                            <option value="5">★★★★★ (5/5)</option>
+                                            <option value="4">★★★★☆ (4/5)</option>
+                                            <option value="3">★★★☆☆ (3/5)</option>
+                                            <option value="2">★★☆☆☆ (2/5)</option>
+                                            <option value="1">★☆☆☆☆ (1/5)</option>
+                                        </select>
+                                    </div>
                                 </div>
-                                <p>(120 Review)</p>
                             </div>
-                            <div class="price"> $50 </div>
-                        </div>
-                        <div>
-                            <button type="button" class="btn btn-dark" style="width: 100%;"> view</button>
-
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-md">
-                <div class="card " style="z-index: 1;">
-                    <div style="z-index: 1; overflow: hidden;">
-                        <img src="img/istockphoto-1149212979-612x612.jpg" class="card-img-top zoom" alt="...">
-                    </div>
-                    <div class="card-body">
-                        <div class=" d-flex justify-content-between align-items-center">
-                            <div class="review">
-                                <div class="rating" style="color: #ffd814;">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                </div>
-                                <p>(120 Review)</p>
+                            <div class="mb-4"><label class="form-label" for="email">Your e-mail *</label>
+                                <input class="form-control" value="{{Auth::user('user')->email}}" readonly>
+                                <input name="product_id" required="" type="text" id="product_id" value="{{$product->id}}" hidden>
                             </div>
-                            <div class="price"> $50 </div>
-                        </div>
-                        <div>
-                            <button type="button" class="btn btn-dark" style="width: 100%;"> view</button>
-
-                        </div>
-                    </div>
-
+                            <div class="mb-4"><label class="form-label" for="review">Review text *</label>
+                                <input rows="4" name="comment" value="{{old('comment')}}" placeholder="Enter your review" required="" type="textarea" id="comment" class="form-control">
+                            </div>
+                            <button type="submit" class="btn btn-outline-dark">Post review</button>
+                        </form>
+                    @endif
                 </div>
             </div>
         </div>
-    </div>
+    @endif
+
     <!--end content-->
 </x-homea>
 

@@ -17,8 +17,13 @@ Route::namespace("Front")->group(function(){
     Route::get("/","FrontController@index")->name('home');
     Route::get("/shop","FrontController@shop")->name('shop');
     Route::get("/about","FrontController@about")->name('about');
-    Route::get("/blog","FrontController@blog")->name('blog');
-    Route::get("/blog/{title}","FrontController@about")->name('my-post');
+    // Group OF Blog Routes
+    Route::prefix("/blog")->group(function(){
+        Route::get("/","FrontController@blog")->name('blog');
+        Route::get("/category","FrontController@category")->name('category');
+        Route::get("/category/{slug}","FrontController@categoryPage")->name('category.page');
+        Route::get("/post/{slug}","FrontController@post")->name('post');
+    });
 });
 
 //Route By Middleware Auth
@@ -59,48 +64,27 @@ Route::middleware(['auth'])->namespace("Dashboard")->prefix("/payment")->name("p
     Route::get('/', 'PaymentController@create')->name('create');
 });
 ////######################End Route for Payment in Front############################
-
-//Route::get('/', function () {
-//    return view('front.home');
-//})->name('home');
-
-//Route::get('/about', function () {
-//    return view('front.about');
-//})->name('about');
-
-Route::get('/user', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('user');
-
-//Route::namespace("Dashboard")->group(function(){
-//    Route::get("contact",'ContactController@create');
-//});
-
-////test
-Route::get('/post', function () {
-    return view('front.post');
+////######################Start Route for Review############################
+Route::middleware(['auth'])->namespace("Dashboard")->group(function(){
+    Route::post('/review/{id}/store', 'ReviewsController@store')->name('review.store');
+    Route::put('/review/{id}/update', 'ReviewsController@update')->name('review.update');
 });
-
-/////////////Dont forget to delete this route and also delete function from controller
+////######################End Route for Review##############################
 Route::namespace("Dashboard")->group(function(){
     Route::get('/product/{id}', 'ProductController@show')->name('product');
-
-    Route::get('/test', 'CartController@test');
 });
-
-///Route for Blog >>>>> Post and Categories
-//Route::get('/blog/category', 'CategoryController@showall');
-//Route::namespace("Dashboard")->prefix("/blog")->name("blog.")->group(function(){
-//
-//
-//});
-
-
 
 Route::namespace("Auth")->group(function(){
     Route::get("auth/redirect","FacebookController@redirect")->name('facebook.redirect');
     Route::get("auth/callback","FacebookController@callback")->name('facebook.callback');
 });
+
+
+
+/////////////Route For test dont forget to delete
+Route::get('/user', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('user');
 
 require __DIR__.'/auth.php';
 

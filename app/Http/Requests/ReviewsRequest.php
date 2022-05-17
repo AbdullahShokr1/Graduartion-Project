@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ReviewsRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class ReviewsRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +24,22 @@ class ReviewsRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
-        ];
+        if ($this->getMethod() === 'POST') {
+            return [
+                'user_id' =>'required|unique:reviews',
+                'product_id' =>'required',
+                'comment' =>'nullable|string',
+                'review' =>'nullable|max:5|min:1',
+            ];
+        }
+
+        if ($this->getMethod() === 'PUT') {
+            return [
+                'user_id' =>['required', 'string', 'max:70'],
+                'product_id' =>'required|',
+                'comment' =>'nullable|string',
+                'review' =>'required|string|max:5|min:1',
+            ];
+        }
     }
 }

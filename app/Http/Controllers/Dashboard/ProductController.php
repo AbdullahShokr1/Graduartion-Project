@@ -7,6 +7,9 @@ use App\Models\Admin;
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Models\Review;
+use http\Client\Curl\User;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -90,8 +93,9 @@ class ProductController extends Controller
 
     public function show($id)
     {
-        $product = Product::query()->where('id','=',$id)->find($id);
-
-        return view("front.product",compact('product'));
+        $product = Product::with('review')->where('id','=',$id)->find($id);
+        $review =Review::with('user')->where('product_id','=',$id)->get();
+        $check =Review::with('User')->where('user_id','=',Auth::user('user')->id)->first();
+        return view("front.product",compact('product','review','check'));
     }
 }

@@ -63,13 +63,4 @@ class CartController extends Controller
         $cart = Cart::truncate();
         return redirect()->route('dashboard.cart')->with(['success'=>'All products have been removed from the basket for all users']) ;
     }
-
-
-    public function test()
-    {
-        return view("front.test",[
-            'products'=>Cart::with('producut')->where('user_id','=',Auth::user('user')->id)->get(),
-        ]);
-    }
-
 }
