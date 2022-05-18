@@ -95,7 +95,11 @@ class ProductController extends Controller
     {
         $product = Product::with('review')->where('id','=',$id)->find($id);
         $review =Review::with('user')->where('product_id','=',$id)->get();
-        $check =Review::with('User')->where('user_id','=',Auth::user('user')->id)->first();
+        if(Auth::user('user')){
+            $check =Review::with('User')->where('user_id','=',Auth::user('user')->id)->first();
+        }else{
+            $check="";
+        }
         return view("front.product",compact('product','review','check'));
     }
 }

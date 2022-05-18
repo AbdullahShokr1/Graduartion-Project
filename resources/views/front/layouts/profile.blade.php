@@ -1,4 +1,4 @@
-<x-homea>
+<x-homea title="{{$myuser->name}}">
     <!--start content-->
     <section class="p-xl-4 md-5"></section>
     <div class="container ">

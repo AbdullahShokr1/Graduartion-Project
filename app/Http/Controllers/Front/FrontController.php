@@ -36,9 +36,7 @@ class FrontController extends Controller
     }
     public function mirror()
     {
-        return view("front.shop",[
-            'products' => Product::get(),
-        ]);
+        return view("front.mirror");
     }
     public function about()
     {

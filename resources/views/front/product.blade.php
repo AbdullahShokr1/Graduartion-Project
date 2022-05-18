@@ -146,9 +146,9 @@
                                 <input name="product_id" required="" type="text" id="product_id" value="{{$product->id}}" hidden>
                             </div>
                             <div class="mb-4"><label class="form-label" for="review">Review text *</label>
-                                <input rows="4" name="comment" value="{{old('comment')}}" placeholder="Enter your review" required="" type="textarea" id="comment" class="form-control">
+                                <input rows="4" name="comment" value="{{$check->comment}}" placeholder="Enter your review" required="" type="textarea" id="comment" class="form-control">
                             </div>
-                            <button type="submit" class="btn btn-outline-dark">Post review</button>
+                            <button type="submit" class="btn btn-outline-dark">Update review</button>
                         </form>
                     @else
                         <!--From For Create Review-->
