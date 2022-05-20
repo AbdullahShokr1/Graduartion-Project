@@ -26,9 +26,8 @@ class ReviewsController extends Controller
 
     //update Category && Store in DB
     public function update($id,ReviewsRequest $request){
-        $review= Review::where('user_id','=',Auth::user('user')->id)->first();
+        $review= Review::where('product_id','=',$id)->where('user_id','=',Auth::user('user')->id)->first();
         $review->update($request->validated());
-
         return redirect()->route('product',$id)->with(['success'=>'Review Updated Successfully']) ;
     }
 

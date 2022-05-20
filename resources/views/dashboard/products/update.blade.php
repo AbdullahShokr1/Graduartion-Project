@@ -71,6 +71,13 @@
                                 {{$message}}
                                 @enderror
                                 <div class="form-group">
+                                    <label for="exampleInputOffer">Product Offer</label>
+                                    <input type="text" name="offer" value="{{$product->offer}}" class="form-control" id="exampleInputOffer" placeholder="Enter Product Offer">
+                                </div>
+                                @error('offer')
+                                {{$message}}
+                                @enderror
+                                <div class="form-group">
                                     <label for="exampleInputFile">File input</label>
                                     <div class="input-group">
                                         <div class="custom-file">

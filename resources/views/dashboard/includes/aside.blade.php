@@ -141,6 +141,14 @@
                     </ul>
                 </li>
                 <li class="nav-item">
+                    <a href="{{route('dashboard.admin.profile',Auth::user('admin')->name)}}" class="nav-link">
+                        <i class="nav-icon fas fa-user-plus"></i>
+                        <p>
+                            Profile
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <p style="cursor: pointer">
                         <form method="POST" action="{{ route('dashboard.logout') }}">
                             @csrf

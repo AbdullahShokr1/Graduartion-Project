@@ -46,6 +46,7 @@ class ProductController extends Controller
             'price'=> $request -> price,
             'photo'=> $file_name,
             'writer_id'=> $request -> writer_id,
+            'offer'=>$request -> offer,
         ];
 
         Product::create($my_product,$request->validated());
@@ -68,8 +69,10 @@ class ProductController extends Controller
         $product->update([
             'title' => $request -> title,
             'description' => $request -> description,
+            'price'=> $request -> price,
             'writer_id' => $request -> writer_id,
             'photo'=>$file_name,
+            'offer'=>$request -> offer,
         ],$request->validated());
 
         return redirect()->route('dashboard.products.index')->with(['success'=>'Product Updated Successfully']) ;
@@ -91,15 +94,21 @@ class ProductController extends Controller
         return $file_name;
     }
 
-    public function show($id)
+    public function show($id,)
     {
         $product = Product::with('review')->where('id','=',$id)->find($id);
         $review =Review::with('user')->where('product_id','=',$id)->get();
         if(Auth::user('user')){
-            $check =Review::with('User')->where('user_id','=',Auth::user('user')->id)->first();
+            $check =Review::with('User')->where('user_id','=',Auth::user('user')->id)->where('product_id','=',$id)->first();
         }else{
             $check="";
         }
-        return view("front.product",compact('product','review','check'));
+
+        if($product){
+            return view("front.product",compact('product','review','check'));
+
+        }else{
+            return redirect()->route('shop');
+        }
     }
 }

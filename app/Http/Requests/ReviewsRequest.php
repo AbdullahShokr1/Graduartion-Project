@@ -26,7 +26,7 @@ class ReviewsRequest extends FormRequest
     {
         if ($this->getMethod() === 'POST') {
             return [
-                'user_id' =>'required|unique:reviews',
+                'user_id' =>'required',
                 'product_id' =>'required',
                 'comment' =>'nullable|string',
                 'review' =>'nullable|max:5|min:1',

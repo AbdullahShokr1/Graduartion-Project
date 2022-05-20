@@ -17,12 +17,6 @@ class CreateShomeSeeder extends Seeder
     {
         $Shome = [
             [
-                'banner'=>'Select Your New Perfect Style',
-                'banner_description'=>'It uses utility classes for typography and spacing to space content out within the larger container.',
-                'banner_photo'=>'aa',
-                'banner1'=>'Select Your New Perfect Style',
-                'banner1_description'=>'It uses utility classes for typography and spacing to space content out within the larger container.',
-                'banner1_photo'=>'aa',
                 'social1'=>'www.sdasdasd.com',
                 'social2'=>'www.sdasdasd.com',
                 'social3'=>'www.sdasdasd.com',

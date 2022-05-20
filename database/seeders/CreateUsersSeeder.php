@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Admin;
+use App\Models\SHome;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -36,6 +37,17 @@ class CreateUsersSeeder extends Seeder
         foreach ($user as $key => $value) {
             User::create($value);
 
+        }
+        $Shome = [
+            [
+                'social1'=>'www.sdasdasd.com',
+                'social2'=>'www.sdasdasd.com',
+                'social3'=>'www.sdasdasd.com',
+                'social4'=>'www.sdasdasd.com',
+            ],
+        ];
+        foreach ($Shome as $key => $value) {
+            SHome::create($value);
         }
     }
 }

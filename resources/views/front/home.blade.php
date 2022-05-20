@@ -12,6 +12,7 @@
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>{{$home->banner}}</h5>
                                 <p>{{$home->banner_description}}</p>
+                                <a class="btn btn-warning btn-lg" href="{{route('shop')}}" role="button">SHOP NOW</a>
                             </div>
                         </div>
                     @else
@@ -20,6 +21,7 @@
                         <div class="carousel-caption d-none d-md-block">
                             <h5>{{$home->banner}}</h5>
                             <p>{{$home->banner_description}}</p>
+                            <a class="btn btn-warning btn-lg" href="{{route('shop')}}" role="button">SHOP NOW</a>
                         </div>
                     </div>
                         @foreach($abouts as $about)
@@ -57,13 +59,13 @@
                                 <div class="work">
                                     <div style="z-index: 1; overflow: hidden; width: auto; height: 219px;">
                                         <div class="badge bg-dark text-white card-badge card-badge-start text-uppercase">
-                                            New
+                                            {{$product->offer}}
                                         </div>
-                                        <img src="img/istockphoto-579246944-612x612.jpg" class="card-img-top" alt="...">
+                                        <img src="{{asset('front/images/products/'.$product->photo)}}" class="card-img-top" alt="...">
                                     </div>
                                     <div class="card-body ">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                        <h5 class="card-title" style="color:#000b16;"><a href="{{route('product',$product->id)}}">{{$product->title}}</a></h5>
+                                        <p class="card-text"><small class="text-muted">{{$product->update_at}}</small></p>
                                     </div>
                                 </div>
                             </div>
@@ -85,7 +87,7 @@
                     <div class="col-md-3 mb-5">
                         <div class="card pb-3" style="z-index: 1;">
                             <div style="z-index: 1; overflow: hidden;">
-                                <img src="img/istockphoto-480106820-612x612.jpg" class="card-img-top zoom" alt="...">
+                                <img src="{{asset('front/images/products/'.$my_product->photo)}}" class="card-img-top zoom" alt="...">
                             </div>
                             <div class="card-body">
                                 <div class=" d-flex justify-content-between align-items-center">
@@ -98,17 +100,21 @@
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star-half-alt"></i>
                                         </div>
-                                        <p>(120 Review)</p>
+                                        <p>({{$my_product->review->count()}} Review)</p>
                                     </div>
-                                    <div class="price"> $50 </div>
+                                    <div class="price">${{$my_product->price}}</div>
                                 </div>
                                 <div class="overlay">
                                     <div>
-                                        <button type="button" class="btn btn-danger" >live
-                                            view</button>
-                                        <button type="button" class="btn btn-warning " >Add to
-                                            cart</button>
-
+                                        <button type="button" class="btn btn-danger" >live view</button>
+                                        <a class="btn btn-warning" onclick="event.preventDefault(); document.getElementById('cart-form-{{$my_product->id}}').submit();">Add to cart</a>
+                                        <form method="post" action="{{route('cart.store',$my_product->id)}}" id="cart-form-{{$my_product->id}}">
+                                            @csrf
+                                            <input name="user_id" value="@if(Auth::user('user')){{Auth::user('user')->id}}@endif" hidden>
+                                            <input name="product_id" value="{{$my_product->id}}" hidden>
+                                            <input name="amount" value="1" hidden>
+                                            <input name="total_cost" value="{{($my_product->price)*(1)}}" hidden>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -122,18 +128,17 @@
         @endif
     </div>
     <section class="p-xl-4 md-5"></section>
-    <section class="mt-3 pt-2 pb-2" style="background-color: #a0a0a0;">
+    <section class="mt-3 pt-2 pb-2" style="background-color: #11101021;  background-image: url('{{asset('front/images/home/photo.jpg')}}');background-attachment: fixed; background-position: inherit; background-repeat: no-repeat; background-size: cover;">
         <div class="container ">
             <div class="row">
-                <div class="text-white text-center py-7 col-lg-6 pt-5">
+                <div class=" text-center py-7 col-lg-6 pt-5" style="color: #000; font-weight: bold;">
                     <h2 class="display-4 text-uppercase mb-4">{{$home->banner1}}</h2>
                     <p class="mb-5">{{$home->banner1_description}}</p>
-                    <p><a href="{{route('shop')}}" role="button" tabindex="0" class="btn btn-outline-light">Shop now</a></p>
-
+                    <a class="btn btn-warning btn-lg" href="{{route('shop')}}" role="button">SHOP NOW</a>
                 </div>
                 <div class="d-none d-lg-flex align-items-end col-lg-6">
                     <div class="text-end ">
-                        <img src="{{asset('front/images/home/'.$home->banner1_photo)}}" alt="" class=" img-thumbnail">
+                        <img src="{{asset('front/images/home/'.$home->banner1_photo)}}" alt="">
                     </div>
                 </div>
             </div>
@@ -149,13 +154,9 @@
                 @foreach($last_products as $my_last)
                     <div class="col-md mb-5">
                         <div class="card text-center">
-                            <img src="img/istockphoto-1215748975-612x612.jpg" class="card-img-top" alt="...">
+                            <img src="{{asset('front/images/products/'.$my_last->photo)}}" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <div class=" d-flex justify-content-between align-items-center">
-                                    <div
-                                        class="product_bubble product_bubble_right product_bubble_bg d-flex flex-column align-items-center">
-                                        <span>-$15</span>
-                                    </div>
                                     <div class="review">
                                         <div class="rating" style="color: #ffd814;">
                                             <i class="fas fa-star"></i>
@@ -164,17 +165,19 @@
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star-half-alt"></i>
                                         </div>
-                                        <p>(120 Review)</p>
+                                        <p>({{$my_last->review->count()}} Review)</p>
                                     </div>
-                                    <div class="price"> $50 </div>
+                                    <div class="price">${{$my_last->price}}</div>
                                 </div>
-                            </div>
-                            <div class="overlay">
-                                <div>
-                                    <button type="button" class="btn btn-danger" style="width: 100%;">live view</button>
 
+                                <div class="overlay" style="position:unset!important;">
+                                    <div>
+                                        <button type="button" class="btn btn-danger" style="width: 100%;">live view</button>
+
+                                    </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 @endforeach
@@ -184,4 +187,26 @@
         @endif
     </div>
     <!--end content-->
+    <section class="pt-5 pb-5" style="background-color: #e9e9e9;">
+        <div class="container">
+            <div class="row text-center pt-3 pb-3">
+                <div class="col-md" style="border-right: 1px solid #495057;">
+                    <i class="fa fa-truck-moving mt-1" style="height:40px; width: 30px;"></i>
+                    <h6 class="text-uppercase">Free shipping &amp; return</h6>
+                    <p class="text-muted fw-light text-sm mb-0">Free Shipping over $300</p>
+                </div>
+                <div class="col-md " style="border-right: 1px solid #495057;">
+                    <i class="fa fa-money-bill mt-1" style="height:40px; width: 30px;"></i>
+                    <h6 class="text-uppercase">Money back guarantee</h6>
+                    <p class="text-muted fw-light text-sm mb-0">30 Days Money Back Guarantee</p>
+                </div>
+                <div class="col-md">
+                    <i class="fa fa-headset" style="height:40px; width: 25px;"></i>
+                    <h6 class="text-uppercase">020-800-456-747</h6>
+                    <p class="text-muted fw-light text-sm mb-0">24/7 Available Support</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
 </x-homea>

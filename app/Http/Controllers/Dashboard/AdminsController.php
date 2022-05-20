@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminRequest;
 use App\Models\Admin;
+use Illuminate\Support\Facades\Auth;
 
 class AdminsController extends Controller
 {
@@ -68,5 +69,12 @@ class AdminsController extends Controller
         $path = $folder;
         $photo->move($path, $file_name);
         return $file_name;
+    }
+
+    public function show($name){
+        $admin_id = Auth::user('admin')->id;
+        return view('dashboard.profile.index',[
+            'info'=>Admin::with('post','product')->where('name','=',$name)->find($admin_id),
+        ]);
     }
 }

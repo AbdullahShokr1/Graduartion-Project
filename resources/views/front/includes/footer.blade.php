@@ -1,27 +1,6 @@
 
 <!-- start footer-->
-<section class="pt-5 pb-5" style="background-color: #e9e9e9;">
-    <div class="container">
-        <div class="row text-center pt-3 pb-3">
-            <div class="col-md" style="border-right: 1px solid #495057;">
-                <i class="fa fa-truck-moving mt-1" style="height:40px; width: 30px;"></i>
-                <h6 class="text-uppercase">Free shipping &amp; return</h6>
-                <p class="text-muted fw-light text-sm mb-0">Free Shipping over $300</p>
-            </div>
-            <div class="col-md " style="border-right: 1px solid #495057;">
-                <i class="fa fa-money-bill mt-1" style="height:40px; width: 30px;"></i>
-                <h6 class="text-uppercase">Money back guarantee</h6>
-                <p class="text-muted fw-light text-sm mb-0">30 Days Money Back Guarantee</p>
-            </div>
-            <div class="col-md">
-                <i class="fa fa-headset" style="height:40px; width: 25px;"></i>
-                <h6 class="text-uppercase">020-800-456-747</h6>
-                <p class="text-muted fw-light text-sm mb-0">24/7 Available Support</p>
-            </div>
 
-        </div>
-    </div>
-</section>
 
 <section class="footer p-lg-5 bg-dark text-white">
 

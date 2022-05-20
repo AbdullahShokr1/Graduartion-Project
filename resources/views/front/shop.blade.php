@@ -7,9 +7,9 @@
                     <div class="card pb-3" style="z-index: 1; ">
                         <div style="z-index: 1; overflow: hidden;">
                             <div class="badge bg-dark text-white card-badge card-badge-start text-uppercase">
-                                New
+                                {{$product->offer}}
                             </div>
-                            <img src="img/istockphoto-476235372-612x612.jpg" class="card-img-top zoom" alt="...">
+                            <img src="{{asset('front/images/products/'.$product->photo)}}" class="card-img-top zoom" alt="...">
                         </div>
                         <div class="card-body">
                             <div class=" d-flex justify-content-between align-items-center">
@@ -55,6 +55,28 @@
 
     <!--end content-->
     <hr>
+    <section class="pt-5 pb-5" style="background-color: #e9e9e9;">
+        <div class="container">
+            <div class="row text-center pt-3 pb-3">
+                <div class="col-md" style="border-right: 1px solid #495057;">
+                    <i class="fa fa-truck-moving mt-1" style="height:40px; width: 30px;"></i>
+                    <h6 class="text-uppercase">Free shipping &amp; return</h6>
+                    <p class="text-muted fw-light text-sm mb-0">Free Shipping over $300</p>
+                </div>
+                <div class="col-md " style="border-right: 1px solid #495057;">
+                    <i class="fa fa-money-bill mt-1" style="height:40px; width: 30px;"></i>
+                    <h6 class="text-uppercase">Money back guarantee</h6>
+                    <p class="text-muted fw-light text-sm mb-0">30 Days Money Back Guarantee</p>
+                </div>
+                <div class="col-md">
+                    <i class="fa fa-headset" style="height:40px; width: 25px;"></i>
+                    <h6 class="text-uppercase">020-800-456-747</h6>
+                    <p class="text-muted fw-light text-sm mb-0">24/7 Available Support</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
 </x-homea>
 
 

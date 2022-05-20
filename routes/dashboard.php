@@ -23,7 +23,8 @@ Route::namespace("Dashboard")->prefix("dashboard")->name("dashboard.")->group(fu
     Route::middleware(['auth:admin'])->group(function(){
         Route::get("/","DashboardController@index")->name('home');
         Route::resource("users",UsersController::class);
-        Route::resource("admins",AdminsController::class);
+        Route::resource("admins",AdminsController::class,['except' => [ 'show' ]]);
+        Route::get("profile/{name}/",'AdminsController@show')->name('admin.profile');
         Route::resource("products",ProductController::class,['except' => [ 'show' ]]);
         Route::resource("category", CategoryController::class);
         Route::resource('post', PostController::class);

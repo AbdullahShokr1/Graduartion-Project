@@ -22,17 +22,20 @@ class FrontController extends Controller
         $home =SHome::query()->where('id','=',1)->find(1);
         return view("front.home",[
             'products' => Product::take(12)->get(),
-            'last_products' => Product::latest()->take(5)->get(),
-            'best_products' => Product::inRandomOrder()->limit(8)->get(),
+            'last_products' => Product::with('review')->latest()->take(5)->get(),
+            'best_products' => Product::with('review')->inRandomOrder()->limit(8)->get(),
             'abouts' => About::take(5)->get(),
 
         ],compact('home'));
     }
     public function shop()
     {
-        return view("front.shop",[
-            'products' => Product::query()->whereDoesntHave('cart')->paginate(12),
-        ]);
+        if(Auth::user('user')){
+            $products = Product::query()->whereDoesntHave('cart')->paginate(12);
+        }else{
+            $products = Product::query()->paginate(12);
+        }
+        return view("front.shop",compact('products'));
     }
     public function mirror()
     {

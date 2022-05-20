@@ -14,6 +14,7 @@ class Product extends Model
         'price',
         'photo',
         'writer_id',
+        'offer',
     ];
 
     /////relation with DB

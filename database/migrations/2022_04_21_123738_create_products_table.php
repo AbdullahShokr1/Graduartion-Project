@@ -20,6 +20,7 @@ return new class extends Migration
                 $table->string('describe');
                 $table->float('price');
                 $table->string('photo');
+                $table->string('offer')->default('New');
                 $table->foreignId('writer_id')->references('id')->on('admins')->onDelete('cascade');
                 $table->timestamps();
             });

@@ -31,6 +31,7 @@ class StoreProductRequest extends FormRequest
                 'price' => 'required|string|max:20000',
                 'writer_id' => 'required|exists:admins,id',
                 'photo' => 'required',
+                'offer' => 'nullable',
             ];
         }
 
@@ -41,6 +42,7 @@ class StoreProductRequest extends FormRequest
                 'price' => ['required','string','max:20000'],
                 'writer_id' => ['required','exists:admins,id'],
                 'photo' =>  ['required'],
+                'offer' =>  ['nullable'],
             ];
         }
     }
