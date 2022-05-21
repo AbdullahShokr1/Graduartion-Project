@@ -32,6 +32,7 @@ class StoreProductRequest extends FormRequest
                 'writer_id' => 'required|exists:admins,id',
                 'photo' => 'required',
                 'offer' => 'nullable',
+                'glassesModel' => 'required',
             ];
         }
 
@@ -43,6 +44,7 @@ class StoreProductRequest extends FormRequest
                 'writer_id' => ['required','exists:admins,id'],
                 'photo' =>  ['required'],
                 'offer' =>  ['nullable'],
+                'glassesModel' =>  ['required'],
             ];
         }
     }

@@ -78,7 +78,7 @@
                                 {{$message}}
                                 @enderror
                                 <div class="form-group">
-                                    <label for="exampleInputFile">File input</label>
+                                    <label for="exampleInputFile">File Photo</label>
                                     <div class="input-group">
                                         <div class="custom-file">
                                             <input type="file" name="photo" value="{{$product->photo}}" class="custom-file-input" id="exampleInputFile">
@@ -93,6 +93,21 @@
                                     </div>
                                 </div>
                                 @error('photo')
+                                {{$message}}
+                                @enderror
+                                <div class="form-group">
+                                    <label for="exampleInputglassesModel">File Glasses Model</label>
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" name="glassesModel" value="{{$product->glassesModel}}" class="custom-file-input" id="exampleInputglassesModel">
+                                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                        </div>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">Upload</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                @error('glassesModel')
                                 {{$message}}
                                 @enderror
                             </div>

@@ -35,8 +35,9 @@ class ProductController extends Controller
 
     public function store(StoreProductRequest $request)
     {
-        if(($request -> photo) != Null){
+        if(($request -> photo) != Null && ($request -> glassesModel) != Null){
             $file_name = $this -> saveImages($request -> photo,'front/images/products');
+            $glassesModel_name = $this -> saveGlassesModel($request -> glassesModel,'glasses3D');
         }else{
             $file_name = "Product Photo";
         }
@@ -47,6 +48,7 @@ class ProductController extends Controller
             'photo'=> $file_name,
             'writer_id'=> $request -> writer_id,
             'offer'=>$request -> offer,
+            'glassesModel'=>$glassesModel_name,
         ];
 
         Product::create($my_product,$request->validated());
@@ -61,8 +63,9 @@ class ProductController extends Controller
 
     public function update(StoreProductRequest $request, Product $product)
     {
-        if(($request -> photo) != Null){
+        if(($request -> photo) != Null && ($request -> glassesModel) != Null){
             $file_name = $this -> saveImages($request -> photo,'front/images/products');
+            $glassesModel_name = $this -> saveGlassesModel($request -> glassesModel,'glasses3D');
         }else{
             $file_name = $product -> photo;
         }
@@ -73,6 +76,7 @@ class ProductController extends Controller
             'writer_id' => $request -> writer_id,
             'photo'=>$file_name,
             'offer'=>$request -> offer,
+            'glassesModel'=>$glassesModel_name,
         ],$request->validated());
 
         return redirect()->route('dashboard.products.index')->with(['success'=>'Product Updated Successfully']) ;
@@ -110,5 +114,16 @@ class ProductController extends Controller
         }else{
             return redirect()->route('shop');
         }
+    }
+
+    ///To Save Glasses Model
+    protected function saveGlassesModel($photo,$folder)
+    {
+        $file_ex = $photo->getClientOriginalExtension();
+//        $file_name = $photo . $file_ex;
+        $file_name = time() . '.' . $file_ex;
+        $path = $folder;
+        $photo->move($path, $file_name);
+        return $file_name;
     }
 }

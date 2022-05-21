@@ -87,7 +87,7 @@
                     <div class="col-md-3 mb-5">
                         <div class="card pb-3" style="z-index: 1;">
                             <div style="z-index: 1; overflow: hidden;">
-                                <img src="{{asset('front/images/products/'.$my_product->photo)}}" class="card-img-top zoom" alt="...">
+                                <a href="{{route('product',$my_product->id)}}"><img src="{{asset('front/images/products/'.$my_product->photo)}}" class="card-img-top zoom" alt="..."></a>
                             </div>
                             <div class="card-body">
                                 <div class=" d-flex justify-content-between align-items-center">
@@ -106,7 +106,7 @@
                                 </div>
                                 <div class="overlay">
                                     <div>
-                                        <button type="button" class="btn btn-danger" >live view</button>
+                                        <a type="button" class="btn btn-danger" href="{{route('GlassesModel',$my_product->id)}}" >live view</a>
                                         <a class="btn btn-warning" onclick="event.preventDefault(); document.getElementById('cart-form-{{$my_product->id}}').submit();">Add to cart</a>
                                         <form method="post" action="{{route('cart.store',$my_product->id)}}" id="cart-form-{{$my_product->id}}">
                                             @csrf
@@ -154,7 +154,7 @@
                 @foreach($last_products as $my_last)
                     <div class="col-md mb-5">
                         <div class="card text-center">
-                            <img src="{{asset('front/images/products/'.$my_last->photo)}}" class="card-img-top" alt="...">
+                            <a href="{{route('product',$my_last->id)}}"><img src="{{asset('front/images/products/'.$my_last->photo)}}" class="card-img-top" alt="..."></a>
                             <div class="card-body">
                                 <div class=" d-flex justify-content-between align-items-center">
                                     <div class="review">
@@ -172,8 +172,7 @@
 
                                 <div class="overlay" style="position:unset!important;">
                                     <div>
-                                        <button type="button" class="btn btn-danger" style="width: 100%;">live view</button>
-
+                                        <a type="button" class="btn btn-danger" href="{{route('GlassesModel',$my_last->id)}}" style="width: 100%;">live view</a>
                                     </div>
                                 </div>
                             </div>

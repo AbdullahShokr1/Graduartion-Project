@@ -21,8 +21,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
     <!-- INCLUDE MAIN SCRIPT: -->
     <link rel="stylesheet" href="{{URL::asset('front/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{URL::asset('front/css/owl.carousel.min.css')}}">
-    <link rel="stylesheet" href="{{URL::asset('front/css/owl.theme.default.min.css')}}">
 
     <script>
         let _isResized = false;
@@ -92,6 +90,7 @@
                     } // end switch
                 } // end onError()
             }) // end JEELIZVTOWIDGET.start call
+            {{--JEELIZVTOWIDGET.load_modelStandalone('../../../glasses3D/{{$model->glassesModel}}');--}}
         } // end main()
 
 
@@ -118,14 +117,14 @@
             display: flex;
             justify-content: center;
         }
-         .myCar{
-             border: 5px solid #d8e418 !important;
-             width: 100px;
-             height: 100px;
-             border-radius: 50%;
-             display: flex;
-             justify-content: center;
-         }
+        .myCar{
+            border: 5px solid #d8e418 !important;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+        }
         .owl-carousel .owl-item img {
             display: block;
             width: 100%;
@@ -133,13 +132,16 @@
             border-radius: 50%;
         }
         #JeelizVTOWidgetChangeModelContainer {
-            bottom: 67px;
+            /*bottom: 67px;*/
             height: 40px;
+            display: flex !important;
+            justify-content: center;
         }
     </style>
 
 </head>
 <body onload="main()">
+    <!-- Start This to show Spacefic Glasses-->
     <div class='content' id="show_glasses">
         <div id='JeelizVTOWidget'>
             <canvas id='JeelizVTOWidgetCanvas'></canvas>
@@ -158,19 +160,8 @@
 
             <!-- CHANGE MODEL BUTTONS: -->
             <!--###################################################-->
-
             <div class='JeelizVTOWidgetControls' id='JeelizVTOWidgetChangeModelContainer'>
-                <section class="featured-carousel owl-carousel">
-                    @foreach($products as $product)
-                        <div class="item">
-                            <div class="work">
-                                <div class="myCar">
-                                    <a onclick="JEELIZVTOWIDGET.load_modelStandalone('glasses3D/{{$product->glassesModel}}')"><img src="{{asset('front/images/products/'.$product->photo)}}" ></a>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </section>
+                <button onclick="JEELIZVTOWIDGET.load_modelStandalone('../../../glasses3D/{{$model->glassesModel}}')">Click to test</button>
             </div>
             <!--###################################################-->
 
@@ -188,15 +179,22 @@
         <a class="close" href="{{route('home')}}">
             <span>&times;</span>
         </a>
-    </section>
-
-
+    <!-- EndThis to show Spacefic Glasses-->
 </body>
 <script src='{{ asset('front/js//jquery.min.js') }}'></script>
 <script src="{{URL::asset('front/js/popper.min.js')}}"></script>
 <script src="{{URL::asset('front/js/bootstrap.min.js')}}"></script>
 <script src="{{URL::asset('front/js/owl.carousel.min.js')}}"></script>
 <script src="{{URL::asset('front/js/main.js')}}"></script>
-
+<script>
+    ///*==========================JeelizVTOWidget==============================*/
+    function myFunction(my_model) {
+        document.getElementById('show_glasses').style.display="block";
+        main();
+    }
+    ///*==========================JeelizVTOWidget==============================*/
+</script>
 </html>
+
+
 

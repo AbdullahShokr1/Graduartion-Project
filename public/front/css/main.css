@@ -89,14 +89,14 @@ a {
     opacity: 1;
 }
 
-.img-fx {
-    background-image: url(../img/IMG_3338.jpg);
-    min-height: 500px;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
+/*.img-fx {*/
+/*    background-image: url(../img/IMG_3338.jpg);*/
+/*    min-height: 500px;*/
+/*    background-attachment: fixed;*/
+/*    background-position: center;*/
+/*    background-repeat: no-repeat;*/
+/*    background-size: cover;*/
+/*}*/
 
 
 .footer {

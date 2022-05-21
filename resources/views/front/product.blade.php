@@ -11,7 +11,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 " style="margin-left: 150px;box-shadow: 0 10px 30px 0 #0d0c0d33; ">
+            <div class="col-md-4 " style="margin-left: 150px;box-shadow: 0 10px 30px 0 #0d0c0d33; margin-bottom: 100px;">
                 <div class=" text-center mt-5">
                     <h2>#{{$product->id}}</h2>
                     <div class="card-body">
@@ -24,18 +24,25 @@
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                 </div>
-                                <p>(120 Review)</p>
+                                <p>({{$product->review->count()}} Review)</p>
                             </div>
-                            <div class="text-muted" style="text-decoration: line-through; margin-left: 120px;"> $50
-                            </div>
+                            <div class="text-muted" style="text-decoration: line-through; margin-left: 120px;"> $500 </div>
                             <div class="price"> ${{$product->price}} </div>
                         </div>
                         <div class="text-muted">{{$product->describe}}</div>
+
+
                         <div class="mb-2 col-lg-6 col-12 mt-2">
-                            <label>Items <span class="text-muted">(required)</span></label>
-                            <input type="number" id="ItemsNumber" class="form-control" style="max-width: 5rem; text-align: center;" value="1">
+                            <form method="post" action="{{route('cart.store',$product->id)}}" id="cart-form-{{$product->id}}">
+                                @csrf
+                                <input name="user_id" value="@if(Auth::user('user')){{Auth::user('user')->id}}@endif" hidden>
+                                <input name="product_id" value="{{$product->id}}" hidden>
+                                <input name="total_cost" value="{{($product->price)*(1)}}" hidden>
+                                <label>Amount <span class="text-muted">(required)</span></label>
+                                <input type="number" id="amount" class="form-control" name="amount" style="max-width: 5rem; text-align: center;" value="1">
+                            </form>
                         </div>
-                        <button type="button" class="btn btn-dark" style="width: 80%;">Add to card</button>
+                        <button type="button" class="btn btn-dark" style="width: 80%;"  onclick="event.preventDefault(); document.getElementById('cart-form-{{$product->id}}').submit();">Add to card</button>
 
                     </div>
 

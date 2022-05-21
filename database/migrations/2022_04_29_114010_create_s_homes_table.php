@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('s_homes', function (Blueprint $table) {
             $table->id();
-            $table->string('logo')->nullable()->default('logo');
+            $table->string('logo')->nullable()->default('logo.png');
             $table->string('banner')->default('Select Your New Perfect Style');
             $table->string('banner_description')->nullable()->default('It uses utility classes for typography and spacing to');
             $table->string('banner_photo')->nullable()->default('banner_photo.png');

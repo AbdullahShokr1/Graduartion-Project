@@ -31,8 +31,9 @@ class PostController extends Controller
 
     public function store(PostRequest $request)
     {
-        if(($request -> photo) != Null){
+        if(($request -> photo) != Null ){
             $file_name = $this -> saveImages($request -> photo,'front/images/posts');
+
         }else{
             $file_name = "Post Photo";
         }

@@ -39,7 +39,9 @@ class FrontController extends Controller
     }
     public function mirror()
     {
-        return view("front.mirror");
+        return view("front.mirror",[
+            'products' => Product::get(),
+        ]);
     }
     public function about()
     {
@@ -86,11 +88,10 @@ class FrontController extends Controller
         $post = Post::with('category')->where('slug','=',$slug)->first();
         return view("front.post",compact('post'));
     }
+
+    public function showGlassesModel($id){
+        $model = Product::where('id','=',$id)->first();
+        return view("front.myGlasses",compact('model'));
+    }
     ################################End##################################
-//    public function product()
-//    {
-//        return view("front.shop",[
-//            'products' => Product::query()->whereDoesntHave('cart')->paginate(12),
-//        ]);
-//    }
 }

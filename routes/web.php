@@ -18,6 +18,7 @@ Route::namespace("Front")->group(function(){
     Route::get("/shop","FrontController@shop")->name('shop');
     Route::get("/about","FrontController@about")->name('about');
     Route::get("/mirror","FrontController@mirror")->name('mirror');
+    Route::get("/glasses/Model/{id}","FrontController@showGlassesModel")->name('GlassesModel');
     // Group OF Blog Routes
     Route::prefix("/blog")->group(function(){
         Route::get("/","FrontController@blog")->name('blog');

@@ -22,6 +22,7 @@ return new class extends Migration
                 $table->string('photo');
                 $table->string('offer')->default('New');
                 $table->foreignId('writer_id')->references('id')->on('admins')->onDelete('cascade');
+                $table->string('glassesModel');
                 $table->timestamps();
             });
         }

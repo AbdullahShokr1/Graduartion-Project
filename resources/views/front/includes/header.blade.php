@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{URL::asset('front/css/unicons.css')}}">
     <link rel="stylesheet" href="{{URL::asset('front/css/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{URL::asset('front/css/owl.theme.default.min.css')}}">
+
     <title>@isset($title){{$title}}@endisset</title>
 </head>
 
@@ -19,7 +20,7 @@
 <!--start navbar-->
 <!--start navbar-->
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark text-center">
-    <a class="navbar-brand ml-3 text-white" href="#"><img src="{{'front/images/home/'.$my_home->logo}}" style="width: 80px;"></a>
+    <a class="navbar-brand ml-3 text-white" href="{{route('home')}}"><img src="{{asset('front/images/home/'.$my_home->logo)}}" style="width: 80px;"></a>
     <button class="navbar-toggler text-white" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navbar">
         <span class="navbar-toggler-icon"></span>
@@ -34,7 +35,7 @@
                 <a class="nav-link mr-2 text-white @if($title=="Shop")active @else @endif" href="{{route('shop')}}">Shop</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link mr-2 text-white @if($title=="Mirror")active @else @endif" href="#">Mirror</a>
+                <a class="nav-link mr-2 text-white @if($title=="Mirror")active @else @endif" href="{{route('mirror')}}">Mirror</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link mr-2 text-white @if($title=="Blog")active @else @endif" href="{{route('blog')}}">Blog</a>

@@ -9,7 +9,7 @@
                             <div class="badge bg-dark text-white card-badge card-badge-start text-uppercase">
                                 {{$product->offer}}
                             </div>
-                            <img src="{{asset('front/images/products/'.$product->photo)}}" class="card-img-top zoom" alt="...">
+                            <a href="{{route('product',$product->id)}}"><img src="{{asset('front/images/products/'.$product->photo)}}" class="card-img-top zoom" alt="..."></a>
                         </div>
                         <div class="card-body">
                             <div class=" d-flex justify-content-between align-items-center">
@@ -21,12 +21,12 @@
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star-half-alt"></i>
                                     </div>
-                                    <p>(120 Review)</p>
+                                    <p>({{$product->review->count()}} Review)</p>
                                 </div>
-                                <div class="price"> $50 </div>
+                                <div class="price"> ${{$product->price}} </div>
                             </div>
                             <div class="overlay" style="text-align: center; margin-left: -20px;">
-                                <button type="button" class="btn btn-danger">live view</button>
+                                <a type="button" class="btn btn-danger" href="{{route('GlassesModel',$product->id)}}">live view</a>
                                 <a class="btn btn-warning" onclick="event.preventDefault(); document.getElementById('cart-form-{{$product->id}}').submit();">Add to cart</a>
                                 <form method="post" action="{{route('cart.store',$product->id)}}" id="cart-form-{{$product->id}}">
                                     @csrf
@@ -78,6 +78,14 @@
         </div>
     </section>
 </x-homea>
+
+
+
+
+
+
+
+
 
 
 
