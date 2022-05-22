@@ -59,7 +59,12 @@
             @if(Auth::user('user'))
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-user" aria-hidden="true"></i>
+                        @if(Auth::user('user')->photo)
+                            <img class="avatar-img" src="{{asset('front/images/users/'.Auth::user('user')->photo)}}" width="90" style="max-width: 51%; height: 100%; -o-object-fit: cover; object-fit: cover; border-radius: 50%;" alt="">
+                        @else
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                        @endif
+
                     </a>
                     <div class="sub-menu dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{route('profile',Auth::user('user')->name)}}">Profile</a>

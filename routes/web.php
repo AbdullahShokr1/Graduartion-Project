@@ -81,12 +81,5 @@ Route::namespace("Auth")->group(function(){
     Route::get("auth/callback","FacebookController@callback")->name('facebook.callback');
 });
 
-
-
-/////////////Route For test dont forget to delete
-Route::get('/user', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('user');
-
 require __DIR__.'/auth.php';
 

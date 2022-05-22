@@ -11,7 +11,7 @@ class ContactController extends Controller
 {
     public function index(){
         return view('dashboard.messages.index',[
-                'contacts' => Contact::latest()->get(),
+                'contacts' => Contact::query()->paginate(10),
             ]);
     }
     public function show($id){

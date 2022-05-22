@@ -185,7 +185,7 @@
 
     <!--this Button to close Mirror and came back to Home-->
     <section class="closeMirror">
-        <a class="close" href="{{route('home')}}">
+        <a class="close" href="{{ url()->previous() }}">
             <span>&times;</span>
         </a>
     </section>

@@ -28,8 +28,8 @@ class AboutRequest extends FormRequest
             return [
                 'name' => 'required|string|max:60',
                 'email' => 'required|email|max:255|unique:abouts',
-                'role' => 'required|min:6',
-                'des' => 'required|min:6',
+                'role' => 'required|',
+                'des' => 'required|',
                 'photo' => 'nullable',
             ];
         }

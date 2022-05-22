@@ -13,7 +13,7 @@ class ReviewsController extends Controller
     //Show all Categories
     public function index(){
         return view('dashboard.review.index',[
-            'reviews'=>Review::with('product','User')->get(),
+            'reviews'=>Review::with('product','User')->paginate(10),
         ]);
     }
 

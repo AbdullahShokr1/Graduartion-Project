@@ -22,18 +22,18 @@ use Illuminate\Support\Facades\Route;
 Route::namespace("Dashboard")->prefix("dashboard")->name("dashboard.")->group(function(){
     Route::middleware(['auth:admin'])->group(function(){
         Route::get("/","DashboardController@index")->name('home');
-        Route::resource("users",UsersController::class);
+        Route::resource("users",UsersController::class,['except' => [ 'show' ]]);
         Route::resource("admins",AdminsController::class,['except' => [ 'show' ]]);
         Route::get("profile/{name}/",'AdminsController@show')->name('admin.profile');
         Route::resource("products",ProductController::class,['except' => [ 'show' ]]);
-        Route::resource("category", CategoryController::class);
-        Route::resource('post', PostController::class);
+        Route::resource("category", CategoryController::class,['except' => [ 'show' ]]);
+        Route::resource('post', PostController::class,['except' => [ 'show' ]]);
         ///Start Home Page setting Route
         Route::get('/settings/home', 'SHomeController@index')->name('home.index');
         Route::get('/settings/home/edit', 'SHomeController@edit')->name('home.edit');
         Route::put('/settings/home/update', 'SHomeController@update')->name('home.update');
         ///End Home Page setting Route
-        Route::resource('/settings/about', AboutController::class);
+        Route::resource('/settings/about', AboutController::class,['except' => [ 'show' ]]);
         //Contact us just here show & delete messages destroy
         Route::get("contact","ContactController@index")->name('contact');
         Route::get("contact/{id}","ContactController@show")->name('show-message');

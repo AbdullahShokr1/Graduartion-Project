@@ -6,9 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
-use App\Http\Requests\UpdateProductRequest;
 use App\Models\Review;
-use http\Client\Curl\User;
 use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
@@ -20,9 +18,7 @@ class ProductController extends Controller
     public function index()
     {
         return view("dashboard.products.index",[
-            'products' => Product::query()->latest()->paginate(10)
-        ],[
-            'admins'=> Admin::get(),
+            'products' => Product::query()->with('admin')->paginate(10),
         ]);
     }
 

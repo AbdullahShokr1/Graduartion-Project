@@ -97,6 +97,9 @@
                     @endforeach
                     </tbody>
                 </table>
+                <div class="mt-4 mypagination">
+                    {{ $admins->links('vendor.pagination.custom') }}
+                </div>
             </div>
             <!-- /.card-body -->
         </div>

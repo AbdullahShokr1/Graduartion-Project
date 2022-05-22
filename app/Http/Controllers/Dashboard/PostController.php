@@ -97,8 +97,4 @@ class PostController extends Controller
         $photo->move($path, $file_name);
         return $file_name;
     }
-    public function show(Post $post)
-    {
-        return view("dashboard.post.show",['posts'=> Post::get()]);
-    }
 }

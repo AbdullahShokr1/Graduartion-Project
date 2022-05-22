@@ -10,7 +10,7 @@ class FollowController extends Controller
 {
     public function index(){
         return view('dashboard.followers.index',[
-            'follows' => Follow::latest()->get(),
+            'follows' => Follow::query()->paginate(10),
         ]);
     }
     public function create(){

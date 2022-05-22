@@ -50,7 +50,7 @@ class CartController extends Controller
     public function show_all()
     {
         return view("dashboard.cart.index",[
-            'carts' => Cart::get()
+            'carts' => Cart::query()->paginate(10),
         ]);
     }
     public function delete(Cart $cart,$id)

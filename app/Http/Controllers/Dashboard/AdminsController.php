@@ -11,7 +11,7 @@ class AdminsController extends Controller
 {
     public function index(){
         return view('dashboard.admins.index',[
-            'admins' =>Admin::latest()->get(),
+            'admins' =>Admin::query()->paginate(10),
         ]);
     }
     public function create(){

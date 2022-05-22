@@ -12,7 +12,7 @@ class UsersController extends Controller
 {
     public function index(){
         return view('dashboard.users.index',[
-            'users' =>User::get(),
+            'users' =>User::query()->paginate(10),
         ]);
     }
     public function create(){

@@ -81,9 +81,7 @@
                                 {{$product->price}}
                             </td>
                             <td>
-                                @foreach($admins->where('id', $product->writer_id) as $admin)
-                                    {{$admin->name}}
-                                @endforeach
+                                {{$product->admin->name}}
                             </td>
 
                             <td class="project-actions text-right">
@@ -114,6 +112,9 @@
                     @endforeach
                     </tbody>
                 </table>
+                <div class="mt-4 mypagination">
+                    {{ $products->links('vendor.pagination.custom') }}
+                </div>
             </div>
             <!-- /.card-body -->
         </div>
