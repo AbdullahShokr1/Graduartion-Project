@@ -18,11 +18,39 @@
                         <div class=" d-flex justify-content-between align-items-center">
                             <div class="review">
                                 <div class="rating" style="color: #ffd814;">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
+                                    @if($total_Review)
+                                        @if($total_Review < 2)
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        @elseif($total_Review > 1 && $total_Review < 3)
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        @elseif($total_Review > 2 &&$total_Review < 4)
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                            <i class="far fa-star"></i>
+                                        @elseif($total_Review > 3 && $total_Review < 5)
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                        @else
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        @endif
+                                    @endif
                                 </div>
                                 <p>({{$product->review->count()}} Review)</p>
                             </div>
@@ -54,7 +82,7 @@
     <div class="container mb-4">
         <div class="row">
             <div class="col-2">
-                <h1 class="ml-3">4.9</h1>
+                <h1 class="ml-3">{{$total_Review}}</h1>
                 <p class="text-success ">VIEW REVIEWS</p>
             </div>
             <div class="col-6 mt-4">
@@ -197,6 +225,10 @@
 
     <!--end content-->
 </x-homea>
+
+
+
+
 
 
 

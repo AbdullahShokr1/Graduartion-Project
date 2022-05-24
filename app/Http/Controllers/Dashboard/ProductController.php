@@ -94,10 +94,12 @@ class ProductController extends Controller
         return $file_name;
     }
 
-    public function show($id,)
+    public function show($id)
     {
         $product = Product::with('review')->where('id','=',$id)->find($id);
         $review =Review::with('user')->where('product_id','=',$id)->get();
+        ///
+        $total_Review =(($review->max('review')/$review->count())*100)/100;
         if(Auth::user('user')){
             $check =Review::with('User')->where('user_id','=',Auth::user('user')->id)->where('product_id','=',$id)->first();
         }else{
@@ -105,7 +107,7 @@ class ProductController extends Controller
         }
 
         if($product){
-            return view("front.product",compact('product','review','check'));
+            return view("front.product",compact('product','review','check','total_Review'));
 
         }else{
             return redirect()->route('shop');

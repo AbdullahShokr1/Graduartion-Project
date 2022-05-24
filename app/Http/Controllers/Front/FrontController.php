@@ -10,6 +10,7 @@ use App\Models\Category;
 use App\Models\Moreinfo;
 use App\Models\Post;
 use App\Models\Product;
+use App\Models\Review;
 use App\Models\SHome;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -31,9 +32,10 @@ class FrontController extends Controller
     public function shop()
     {
         if(Auth::user('user')){
-            $products = Product::query()->whereDoesntHave('cart')->paginate(12);
+            $products = Product::with('review')->whereDoesntHave('cart')->paginate(12);
+
         }else{
-            $products = Product::query()->paginate(12);
+            $products = Product::with('review')->paginate(12);
         }
         return view("front.shop",compact('products'));
     }
