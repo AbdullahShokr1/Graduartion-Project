@@ -84,6 +84,9 @@
             @endif
         </ul>
     </div>
+    <section class='mode col-md'>
+        <section class="switch"><section class="circle"></section></section>
+    </section>
 </nav>
 <!--end navbar-->
 

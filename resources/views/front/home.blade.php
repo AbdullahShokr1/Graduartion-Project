@@ -242,7 +242,7 @@
         @endif
     </div>
     <!--end content-->
-    <section class="pt-5 pb-5" style="background-color: #e9e9e9;">
+    <section class="pt-5 pb-5 foo" style="background-color: #e9e9e9;">
         <div class="container">
             <div class="row text-center pt-3 pb-3">
                 <div class="col-md" style="border-right: 1px solid #495057;">

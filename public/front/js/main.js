@@ -1,17 +1,17 @@
 (function($) { "use strict";
-    // //Switch dark/light
-    // $(".switch").on('click', function () {
-    //     if ($("body").hasClass("dark")) {
-    //         $("body").removeClass("dark");
-    //         $(".cardd").removeClass("bg-dark");
-    //         $(".switch").removeClass("switched");
-    //     }
-    //     else {
-    //         $("body").addClass("dark");
-    //         $(".cardd").addClass("bg-dark");
-    //         $(".switch").addClass("switched");
-    //     }
-    // });
+    //Switch dark/light
+    $(".switch").on('click', function () {
+        if ($("body").hasClass("dark")) {
+            $("body").removeClass("dark");
+            $(".card").removeClass("bg-dark");
+            $(".switch").removeClass("switched");
+        }
+        else {
+            $("body").addClass("dark");
+            $(".card").addClass("bg-dark");
+            $(".switch").addClass("switched");
+        }
+    });
 
     $(document).ready(function(){"use strict";
         //Scroll back to top
