@@ -45,14 +45,17 @@
                         <th style="width: 1%">
                             #
                         </th>
-                        <th style="width: 30%">
+                        <th>
                             Admin Photo
                         </th>
-                        <th style="width: 20%">
+                        <th>
                             Admin Name
                         </th>
                         <th>
                             Admin Email
+                        </th>
+                        <th>
+                            Admin Privileges
                         </th>
                         <th style="width: 20%">
                         </th>
@@ -72,6 +75,19 @@
                             </td>
                             <td class="project_progress">
                                 {{$admin->email}}
+                            </td>
+                            <td class="project_progress">
+                                @switch($admin->privileges)
+                                    @case(0)
+                                        Admin & Developer
+                                    @break
+                                    @case(1)
+                                        Writer
+                                    @break
+                                    @case(2)
+                                        Marketer
+                                    @break
+                                @endswitch
                             </td>
                             <td class="project-actions text-right">
 

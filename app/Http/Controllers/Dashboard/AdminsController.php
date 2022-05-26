@@ -29,6 +29,7 @@ class AdminsController extends Controller
             'name' => $request -> name,
             'email'=> $request -> email,
             'password'=> $request -> password,
+            'privileges'=>$request->privileges,
             'photo'=> $file_name,
         ];
 
@@ -52,6 +53,7 @@ class AdminsController extends Controller
             'name' => $request -> name,
             'email'=> $request -> email,
             'password'=> $request -> password,
+            'privileges'=>$request->privileges,
             'photo'=> $file_name,
         ],$request->validated());
 

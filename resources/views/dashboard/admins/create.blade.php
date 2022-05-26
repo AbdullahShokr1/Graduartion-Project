@@ -62,6 +62,17 @@
                                 {{$message}}
                                 @enderror
                                 <div class="form-group">
+                                    <label>Admin Privileges</label>
+                                    <select class="form-control" name="privileges" >
+                                        <option value="0">Admin & Developer</option>
+                                        <option value="1">Writer</option>
+                                        <option value="2">Marketer</option>
+                                    </select>
+                                </div>
+                                @error('privileges')
+                                {{$message}}
+                                @enderror
+                                <div class="form-group">
                                     <label for="exampleInputFile">File input</label>
                                     <div class="input-group">
                                         <div class="custom-file">

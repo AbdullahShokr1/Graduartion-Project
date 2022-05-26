@@ -161,7 +161,11 @@
             <!-- CHANGE MODEL BUTTONS: -->
             <!--###################################################-->
             <div class='JeelizVTOWidgetControls' id='JeelizVTOWidgetChangeModelContainer'>
-                <button onclick="JEELIZVTOWIDGET.load_modelStandalone('../../../glasses3D/{{$model->glassesModel}}')">Click to test</button>
+                @if(substr($model->glassesModel, -4) == "json")
+                    <button onclick="JEELIZVTOWIDGET.load_modelStandalone('../../../glasses3D/{{$model->glassesModel}}')">Click to test</button>
+                @else
+                    <button onclick="JEELIZVTOWIDGET.load('{{$model->glassesModel}}')">Click to test</button>
+                @endif
             </div>
             <!--###################################################-->
 

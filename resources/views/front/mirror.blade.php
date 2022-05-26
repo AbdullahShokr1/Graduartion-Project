@@ -162,13 +162,22 @@
             <div class='JeelizVTOWidgetControls' id='JeelizVTOWidgetChangeModelContainer'>
                 <section class="featured-carousel owl-carousel">
                     @foreach($products as $product)
-                        <div class="item">
-                            <div class="work">
-                                <div class="myCar">
-                                    <a onclick="JEELIZVTOWIDGET.load_modelStandalone('glasses3D/{{$product->glassesModel}}')"><img src="{{asset('front/images/products/'.$product->photo)}}" ></a>
+                        @if(substr($product->glassesModel, -4) == "json")
+                            <div class="item">
+                                <div class="work">
+                                    <div class="myCar">
+                                        <a onclick="JEELIZVTOWIDGET.load_modelStandalone('glasses3D/{{$product->glassesModel}}')"><img src="{{asset('front/images/products/'.$product->photo)}}" ></a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        @else
+                            <div class="work">
+                                <div class="myCar">
+                                    <a onclick="JEELIZVTOWIDGET.load('{{$product->glassesModel}}')"><img src="{{asset('front/images/products/'.$product->photo)}}" ></a>
+                                </div>
+                            </div>
+                        @endif
+
                     @endforeach
                 </section>
             </div>

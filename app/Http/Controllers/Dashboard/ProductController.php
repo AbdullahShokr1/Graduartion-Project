@@ -99,7 +99,12 @@ class ProductController extends Controller
         $product = Product::with('review')->where('id','=',$id)->find($id);
         $review =Review::with('user')->where('product_id','=',$id)->get();
         ///
-        $total_Review =(($review->max('review')/$review->count())*100)/100;
+        if($review->count() > 0){
+            $total_Review =(($review->max('review')/$review->count())*100)/100;
+        }else{
+            $total_Review=0;
+        }
+
         if(Auth::user('user')){
             $check =Review::with('User')->where('user_id','=',Auth::user('user')->id)->where('product_id','=',$id)->first();
         }else{

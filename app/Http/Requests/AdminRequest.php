@@ -30,6 +30,7 @@ class AdminRequest extends FormRequest
                 'email' => 'required|email|max:255|unique:admins',
                 'password' => 'required|min:6',
                 'photo' => 'nullable',
+                'privileges' => 'nullable',
             ];
         }
 
@@ -39,6 +40,7 @@ class AdminRequest extends FormRequest
                 'email' => ['required', 'email', 'max:255', Rule::unique('admins')->ignore($this->admin->id)],
                 'password' => 'nullable|min:6',
                 'photo' =>  ['nullable'],
+                'privileges' =>  ['nullable'],
             ];
         }
     }

@@ -16,7 +16,7 @@ Route::group(['middleware' => ['guest:admin'], 'prefix'=>'dashboard', 'as'=>'das
 });
 
 Route::group(['middleware' => ['auth:admin'], 'prefix'=>'dashboard', 'as'=>'dashboard.'],function(){
-    Route::get('register', [RegisteredUserController::class, 'create'])->name('register');
+    Route::get('register', [RegisteredUserController::class, 'create'])->name('register')->middleware('developer');
     Route::post('register', [RegisteredUserController::class, 'store']);
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])->name('password.request');
     Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])->name('password.email');

@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Sanctum\HasApiTokens;
 
 class Admin extends Authenticatable
@@ -23,7 +24,7 @@ class Admin extends Authenticatable
         'email',
         'password',
         'photo',
-
+        'privileges',
     ];
 
     /**
@@ -62,5 +63,4 @@ class Admin extends Authenticatable
         return $this->hasMany('App\Models\Post','writer_id');
     }
     #################End Relations#################
-
 }

@@ -94,39 +94,48 @@
 
                                     <div class="review">
                                         <div class="rating" style="color: #ffd814;">
-                                            @if(((($my_product->review->max('review')/$my_product->review->count())*100)/100))
-                                                @if(((($my_product->review->max('review')/$my_product->review->count())*100)/100) < 2)
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star-half-alt"></i>
-                                                    <i class="far fa-star"></i>
-                                                    <i class="far fa-star"></i>
-                                                    <i class="far fa-star"></i>
-                                                @elseif(((($my_product->review->max('review')/$my_product->review->count())*100)/100) > 1 && ((($my_product->review->max('review')/$my_product->review->count())*100)/100) < 3)
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star-half-alt"></i>
-                                                    <i class="far fa-star"></i>
-                                                    <i class="far fa-star"></i>
-                                                @elseif(((($my_product->review->max('review')/$my_product->review->count())*100)/100) > 2 && ((($my_product->review->max('review')/$my_product->review->count())*100)/100) < 4)
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star-half-alt"></i>
-                                                    <i class="far fa-star"></i>
-                                                @elseif(((($my_product->review->max('review')/$my_product->review->count())*100)/100) > 3 && ((($my_product->review->max('review')/$my_product->review->count())*100)/100) < 5)
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star-half-alt"></i>
-                                                @else
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
+                                            @if(($product->review->count())> 0)
+                                                @if(((($my_product->review->max('review')/$my_product->review->count())*100)/100))
+                                                    @if(((($my_product->review->max('review')/$my_product->review->count())*100)/100) < 2)
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star-half-alt"></i>
+                                                        <i class="far fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                    @elseif(((($my_product->review->max('review')/$my_product->review->count())*100)/100) > 1 && ((($my_product->review->max('review')/$my_product->review->count())*100)/100) < 3)
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star-half-alt"></i>
+                                                        <i class="far fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                    @elseif(((($my_product->review->max('review')/$my_product->review->count())*100)/100) > 2 && ((($my_product->review->max('review')/$my_product->review->count())*100)/100) < 4)
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star-half-alt"></i>
+                                                        <i class="far fa-star"></i>
+                                                    @elseif(((($my_product->review->max('review')/$my_product->review->count())*100)/100) > 3 && ((($my_product->review->max('review')/$my_product->review->count())*100)/100) < 5)
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star-half-alt"></i>
+                                                    @else
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                    @endif
                                                 @endif
+                                            @else
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star-half-alt"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
                                             @endif
+
                                         </div>
                                         <p>({{$my_product->review->count()}} Review)</p>
                                     </div>
@@ -187,39 +196,48 @@
                                 <div class=" d-flex justify-content-between align-items-center">
                                     <div class="review">
                                         <div class="rating" style="color: #ffd814;">
-                                            @if(((($my_last->review->max('review')/$my_last->review->count())*100)/100))
-                                                @if(((($my_last->review->max('review')/$my_last->review->count())*100)/100) < 2)
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star-half-alt"></i>
-                                                    <i class="far fa-star"></i>
-                                                    <i class="far fa-star"></i>
-                                                    <i class="far fa-star"></i>
-                                                @elseif(((($my_last->review->max('review')/$my_last->review->count())*100)/100) > 1 && ((($my_last->review->max('review')/$my_last->review->count())*100)/100) < 3)
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star-half-alt"></i>
-                                                    <i class="far fa-star"></i>
-                                                    <i class="far fa-star"></i>
-                                                @elseif(((($my_last->review->max('review')/$my_last->review->count())*100)/100) > 2 && ((($my_last->review->max('review')/$my_last->review->count())*100)/100) < 4)
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star-half-alt"></i>
-                                                    <i class="far fa-star"></i>
-                                                @elseif(((($my_last->review->max('review')/$my_last->review->count())*100)/100) > 3 && ((($my_last->review->max('review')/$my_last->review->count())*100)/100) < 5)
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star-half-alt"></i>
-                                                @else
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
+                                            @if(($product->review->count())> 0)
+                                                @if(((($my_last->review->max('review')/$my_last->review->count())*100)/100))
+                                                    @if(((($my_last->review->max('review')/$my_last->review->count())*100)/100) < 2)
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star-half-alt"></i>
+                                                        <i class="far fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                    @elseif(((($my_last->review->max('review')/$my_last->review->count())*100)/100) > 1 && ((($my_last->review->max('review')/$my_last->review->count())*100)/100) < 3)
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star-half-alt"></i>
+                                                        <i class="far fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                    @elseif(((($my_last->review->max('review')/$my_last->review->count())*100)/100) > 2 && ((($my_last->review->max('review')/$my_last->review->count())*100)/100) < 4)
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star-half-alt"></i>
+                                                        <i class="far fa-star"></i>
+                                                    @elseif(((($my_last->review->max('review')/$my_last->review->count())*100)/100) > 3 && ((($my_last->review->max('review')/$my_last->review->count())*100)/100) < 5)
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star-half-alt"></i>
+                                                    @else
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                    @endif
                                                 @endif
+                                            @else
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star-half-alt"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
                                             @endif
+
                                         </div>
                                         <p>({{$my_last->review->count()}} Review)</p>
                                     </div>

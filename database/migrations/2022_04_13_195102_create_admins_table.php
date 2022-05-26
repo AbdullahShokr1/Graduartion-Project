@@ -20,6 +20,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('photo')->nullable()->default('avatar.png');
+            $table->integer('privileges')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });
@@ -34,4 +35,5 @@ return new class extends Migration
     {
         Schema::dropIfExists('admins');
     }
+
 };

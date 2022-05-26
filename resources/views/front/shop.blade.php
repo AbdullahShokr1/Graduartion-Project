@@ -15,39 +15,48 @@
                             <div class=" d-flex justify-content-between align-items-center">
                                 <div class="review">
                                     <div class="rating" style="color: #ffd814;">
-                                        @if(((($product->review->max('review')/$product->review->count())*100)/100))
-                                            @if(((($product->review->max('review')/$product->review->count())*100)/100) < 2)
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star-half-alt"></i>
-                                                <i class="far fa-star"></i>
-                                                <i class="far fa-star"></i>
-                                                <i class="far fa-star"></i>
-                                            @elseif(((($product->review->max('review')/$product->review->count())*100)/100) > 1 && ((($product->review->max('review')/$product->review->count())*100)/100) < 3)
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star-half-alt"></i>
-                                                <i class="far fa-star"></i>
-                                                <i class="far fa-star"></i>
-                                            @elseif(((($product->review->max('review')/$product->review->count())*100)/100) > 2 && ((($product->review->max('review')/$product->review->count())*100)/100) < 4)
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star-half-alt"></i>
-                                                <i class="far fa-star"></i>
-                                            @elseif(((($product->review->max('review')/$product->review->count())*100)/100) > 3 && ((($product->review->max('review')/$product->review->count())*100)/100) < 5)
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star-half-alt"></i>
-                                            @else
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
+                                        @if(($product->review->count())> 0)
+                                            @if(((($product->review->max('review')/$product->review->count())*100)/100))
+                                                @if(((($product->review->max('review')/$product->review->count())*100)/100) < 2)
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star-half-alt"></i>
+                                                    <i class="far fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                @elseif(((($product->review->max('review')/$product->review->count())*100)/100) > 1 && ((($product->review->max('review')/$product->review->count())*100)/100) < 3)
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star-half-alt"></i>
+                                                    <i class="far fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                @elseif(((($product->review->max('review')/$product->review->count())*100)/100) > 2 && ((($product->review->max('review')/$product->review->count())*100)/100) < 4)
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star-half-alt"></i>
+                                                    <i class="far fa-star"></i>
+                                                @elseif(((($product->review->max('review')/$product->review->count())*100)/100) > 3 && ((($product->review->max('review')/$product->review->count())*100)/100) < 5)
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star-half-alt"></i>
+                                                @else
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                @endif
                                             @endif
+                                        @else
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
                                         @endif
+
                                     </div>
                                     <p>({{$product->review->count()}} Review)</p>
                                 </div>
