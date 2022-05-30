@@ -43,7 +43,6 @@ class AdminsController extends Controller
     }
     //update User && Store in DB
     public function update(Admin $admin,AdminRequest $request){
-
         if(($request -> photo) != Null){
             $file_name = $this -> saveImages($request -> photo,'dashboardfile/images/admins');
         }else{
@@ -58,6 +57,7 @@ class AdminsController extends Controller
         ],$request->validated());
 
         return redirect()->route('dashboard.admins.index')->with(['success'=>'admins Updated Successfully']) ;
+
     }
     //update User && Store in DB
     public function destroy(Admin $admin){
@@ -78,5 +78,14 @@ class AdminsController extends Controller
         return view('dashboard.profile.index',[
             'info'=>Admin::with('post','product')->where('name','=',$name)->find($admin_id),
         ]);
+    }
+    ///Edit my info
+    public function editmyinfo($id){
+        if(Auth::user('admin')->id == $id){
+            $admin=Admin::query()->where('id','=',$id)->find($id);
+            return view('dashboard.admins.update',compact('admin'));
+        }else{
+            return redirect()->route('dashboard.admin.profile',Auth::user('admin')->name);
+        }
     }
 }

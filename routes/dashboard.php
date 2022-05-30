@@ -60,6 +60,7 @@ Route::namespace("Dashboard")->prefix("dashboard")->name("dashboard.")->group(fu
             Route::delete('review/{id}/delete', 'ReviewsController@destroy')->name('review.delete');
         });
         Route::get("profile/{name}/",'AdminsController@show')->name('admin.profile');
+        Route::get("profile/edit/{id}",'AdminsController@editmyinfo')->name('admin.profile.edit');
     });
 });
 

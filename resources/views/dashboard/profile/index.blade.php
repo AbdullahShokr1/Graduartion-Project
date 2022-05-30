@@ -44,7 +44,8 @@
                                     </li>
                                 </ul>
 
-                                <a href="{{route('dashboard.admins.edit',$info->id)}}" class="btn btn-primary btn-block"><b>Edit information</b></a>
+{{--                                <a href="{{route('dashboard.admins.edit',$info->id)}}" class="btn btn-primary btn-block"><b>Edit information</b></a>--}}
+                                <a href="{{route('dashboard.admin.profile.edit',$info->id)}}" class="btn btn-primary btn-block"><b>Edit information</b></a>
                             </div>
                             <!-- /.card-body -->
                         </div>
@@ -67,8 +68,16 @@
                                 <strong><i class="fas fa-book mr-1"></i>Email</strong>
                                 <p class="text-muted">{{$info->email}} </p>
                                 <hr>
-                                <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>
-                                <p class="text-muted">This ِadmin has the right to access all powers, control completely, and modify all data on the site</p>
+                                @if(Auth::user('admin')->privileges == 0)
+                                    <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>
+                                    <p class="text-muted">This ِadmin has the right to access all powers, control completely, and modify all data on the site</p>
+                                @elseif(Auth::user('admin')->privileges == 1)
+                                    <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>
+                                    <p class="text-muted">This Writer has the right to access some powers and control only to modify the blog on the site</p>
+                                @else
+                                    <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>
+                                    <p class="text-muted">This marketer has the right to access some of the powers and control some of the existing data such as adding, modifying and deleting products, the cart and messages that come from customers and postal subscriptions to send offers and discounts to bring more customers on the site</p>
+                                @endif
                             </div>
                             <!-- /.card-body -->
                         </div>
