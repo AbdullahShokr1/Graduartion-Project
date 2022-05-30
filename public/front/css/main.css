@@ -573,3 +573,72 @@ body.dark .col-md-8.table{
 body.dark .bg-white.rounded-3.shadow-lg.p-4 {
     background-color: #000!important;
 }
+html {
+    overflow-y: scroll;
+}
+
+@supports (scrollbar-gutter: stable) {
+    html {
+        overflow-y: auto;
+        scrollbar-gutter: stable;
+    }
+}
+
+@supports (overflow-y: overlay) {
+    html {
+        overflow-y: overlay;
+        scrollbar-gutter: auto;
+    }
+}
+html[dir='ltr'] main {
+    padding-left: calc(100vw - 100%);
+}
+
+html[dir='rtl'] main {
+    padding-right: calc(100vw - 100%);
+}
+
+.myimage{
+    width: 96px !important;
+    height: 96px !important;
+    background-attachment: fixed;
+    background-position: inherit;
+    background-repeat: no-repeat;
+    display: flex;
+}
+body.dark a.p-0.text-decoration-none.blog-head {
+    color: #f6f7fb;
+}
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .switch {
+        right: 133px;
+        top: 41px;
+    }
+}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .switch {
+        right: 342px;
+    }
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .switch {
+        right: 70px;
+    }
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .switch {
+        right: 67px;
+    }
+
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .switch {
+        right: 77px;
+    }
+
+}

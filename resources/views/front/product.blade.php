@@ -13,7 +13,7 @@
             </div>
             <div class="col-md-4 " style="margin-left: 150px;box-shadow: 0 10px 30px 0 #0d0c0d33; margin-bottom: 100px;">
                 <div class=" text-center mt-5">
-                    <h2>#{{$product->id}}</h2>
+                    <h2>{{$product->title}}</h2>
                     <div class="card-body">
                         <div class=" d-flex justify-content-between align-items-center">
                             <div class="review">

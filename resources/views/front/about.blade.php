@@ -19,8 +19,11 @@
         <div class="row">
             @foreach($abouts as $about)
                 <div class="col-lg-4 col-sm-6 mt-5">
-                    <div class="d-flex align-items-center"><img class="rounded-circle shadow" src="{{ asset('front/images/about/'.$about->photo)}}" width="96" alt="Aya-M-Fouda">
-                        <div class="ml-4 ">
+                    <div class="d-flex align-items-center">
+                        <div class="myimage">
+                            <img class="rounded-circle shadow" src="{{ asset('front/images/about/'.$about->photo)}}" width="96" alt="{{$about->name}}">
+                        </div>
+                        <div class="ml-2 ">
                             <h5 class=" mb-1">{{$about->name}}</h5>
                             <p class="text-muted mb-0">{{$about->role}} & {{$about->des}}</p>
                             <a class="p-0 text-decoration-none blog-head" href="">

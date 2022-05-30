@@ -1,5 +1,4 @@
 <x-homea title="Home" >
-
     <!--start content-->
     <!--#2 Start Carousel-->
     <section id="myCarousel">
@@ -64,7 +63,14 @@
                                         <img src="{{asset('front/images/products/'.$product->photo)}}" class="card-img-top" alt="...">
                                     </div>
                                     <div class="card-body ">
-                                        <h5 class="card-title" style="color:#000b16;"><a href="{{route('product',$product->id)}}">{{$product->title}}</a></h5>
+                                        <div class="rating" style="color: #000c19;">
+                                            <h5 class="card-title" style="color:#1e2b37;"><a href="{{route('product',$product->id)}}">{{$product->title}}</a></h5>
+                                        </div>
+                                        <div class="overlay" style="position:unset!important;">
+                                            <div>
+                                                <a type="button" class="btn btn-danger" href="{{route('GlassesModel',$product->id)}}" style="width: 100%;">live view</a>
+                                            </div>
+                                        </div>
                                         <p class="card-text"><small class="text-muted">{{$product->update_at}}</small></p>
                                     </div>
                                 </div>
@@ -77,44 +83,52 @@
     @else
         <p style="text-align: center;">No Product to show</p>
     @endif
+    <section class="mt-3 pt-2 pb-2" style="background-color: #11101021;  background-image: url('{{asset('front/images/home/photo.jpg')}}');background-attachment: fixed; background-position: inherit; background-repeat: no-repeat; background-size: cover;height: 400px;">
+        <div class="container ">
+            <div class="row">
+            </div>
+        </div>
+    </section>
     <div class="container mt-5">
         <div class="text-center mb-5">
             <h4>New Arrivals</h4>
         </div>
         @if(!($best_products->isEmpty()))
             <div class="row">
-                @foreach($best_products as $my_product)
-                    <div class="col-md-3 mb-5">
-                        <div class="card pb-3" style="z-index: 1;">
+                @foreach($best_products as $product)
+                    <div class="col-md-3 mb-4 p-2 shadow">
+                        <div class="card pb-3" style="z-index: 1; ">
                             <div style="z-index: 1; overflow: hidden;">
-                                <a href="{{route('product',$my_product->id)}}"><img src="{{asset('front/images/products/'.$my_product->photo)}}" class="card-img-top zoom" alt="..."></a>
+                                <div class="badge bg-dark text-white card-badge card-badge-start text-uppercase">
+                                    {{$product->offer}}
+                                </div>
+                                <a href="{{route('product',$product->id)}}"><img src="{{asset('front/images/products/'.$product->photo)}}" class="card-img-top zoom" alt="..."></a>
                             </div>
                             <div class="card-body">
                                 <div class=" d-flex justify-content-between align-items-center">
-
                                     <div class="review">
                                         <div class="rating" style="color: #ffd814;">
                                             @if(($product->review->count())> 0)
-                                                @if(((($my_product->review->max('review')/$my_product->review->count())*100)/100))
-                                                    @if(((($my_product->review->max('review')/$my_product->review->count())*100)/100) < 2)
+                                                @if(((($product->review->max('review')/$product->review->count())*100)/100))
+                                                    @if(((($product->review->max('review')/$product->review->count())*100)/100) < 2)
                                                         <i class="fas fa-star"></i>
                                                         <i class="fas fa-star-half-alt"></i>
                                                         <i class="far fa-star"></i>
                                                         <i class="far fa-star"></i>
                                                         <i class="far fa-star"></i>
-                                                    @elseif(((($my_product->review->max('review')/$my_product->review->count())*100)/100) > 1 && ((($my_product->review->max('review')/$my_product->review->count())*100)/100) < 3)
+                                                    @elseif(((($product->review->max('review')/$product->review->count())*100)/100) > 1 && ((($product->review->max('review')/$product->review->count())*100)/100) < 3)
                                                         <i class="fas fa-star"></i>
                                                         <i class="fas fa-star"></i>
                                                         <i class="fas fa-star-half-alt"></i>
                                                         <i class="far fa-star"></i>
                                                         <i class="far fa-star"></i>
-                                                    @elseif(((($my_product->review->max('review')/$my_product->review->count())*100)/100) > 2 && ((($my_product->review->max('review')/$my_product->review->count())*100)/100) < 4)
+                                                    @elseif(((($product->review->max('review')/$product->review->count())*100)/100) > 2 && ((($product->review->max('review')/$product->review->count())*100)/100) < 4)
                                                         <i class="fas fa-star"></i>
                                                         <i class="fas fa-star"></i>
                                                         <i class="fas fa-star"></i>
                                                         <i class="fas fa-star-half-alt"></i>
                                                         <i class="far fa-star"></i>
-                                                    @elseif(((($my_product->review->max('review')/$my_product->review->count())*100)/100) > 3 && ((($my_product->review->max('review')/$my_product->review->count())*100)/100) < 5)
+                                                    @elseif(((($product->review->max('review')/$product->review->count())*100)/100) > 3 && ((($product->review->max('review')/$product->review->count())*100)/100) < 5)
                                                         <i class="fas fa-star"></i>
                                                         <i class="fas fa-star"></i>
                                                         <i class="fas fa-star"></i>
@@ -137,22 +151,20 @@
                                             @endif
 
                                         </div>
-                                        <p>({{$my_product->review->count()}} Review)</p>
+                                        <p>({{$product->review->count()}} Review)</p>
                                     </div>
-                                    <div class="price">${{$my_product->price}}</div>
+                                    <div class="price"> ${{$product->price}} </div>
                                 </div>
-                                <div class="overlay">
-                                    <div>
-                                        <a type="button" class="btn btn-danger" href="{{route('GlassesModel',$my_product->id)}}" >live view</a>
-                                        <a class="btn btn-warning" onclick="event.preventDefault(); document.getElementById('cart-form-{{$my_product->id}}').submit();">Add to cart</a>
-                                        <form method="post" action="{{route('cart.store',$my_product->id)}}" id="cart-form-{{$my_product->id}}">
-                                            @csrf
-                                            <input name="user_id" value="@if(Auth::user('user')){{Auth::user('user')->id}}@endif" hidden>
-                                            <input name="product_id" value="{{$my_product->id}}" hidden>
-                                            <input name="amount" value="1" hidden>
-                                            <input name="total_cost" value="{{($my_product->price)*(1)}}" hidden>
-                                        </form>
-                                    </div>
+                                <div class="overlay" style="text-align: center; margin-left: -20px;">
+                                    <a type="button" class="btn btn-danger" href="{{route('GlassesModel',$product->id)}}">live view</a>
+                                    <a class="btn btn-warning" onclick="event.preventDefault(); document.getElementById('cart-form-{{$product->id}}').submit();">Add to cart</a>
+                                    <form method="post" action="{{route('cart.store',$product->id)}}" id="cart-form-{{$product->id}}">
+                                        @csrf
+                                        <input name="user_id" value="@if(Auth::user('user')){{Auth::user('user')->id}}@endif" hidden>
+                                        <input name="product_id" value="{{$product->id}}" hidden>
+                                        <input name="amount" value="1" hidden>
+                                        <input name="total_cost" value="{{($product->price)*(1)}}" hidden>
+                                    </form>
                                 </div>
                             </div>
 
@@ -165,7 +177,7 @@
         @endif
     </div>
     <section class="p-xl-4 md-5"></section>
-    <section class="mt-3 pt-2 pb-2" style="background-color: #11101021;  background-image: url('{{asset('front/images/home/photo.jpg')}}');background-attachment: fixed; background-position: inherit; background-repeat: no-repeat; background-size: cover;">
+    <section class="mt-3 pt-2 pb-2" style="background-color: #a0a0a0;">
         <div class="container ">
             <div class="row">
                 <div class=" text-center py-7 col-lg-6 pt-5" style="color: #000; font-weight: bold;">
@@ -189,7 +201,7 @@
         @if(!($last_products->isEmpty()))
             <div class="row">
                 @foreach($last_products as $my_last)
-                    <div class="col-md mb-5">
+                    <div class="col-md-3 mb-5">
                         <div class="card text-center">
                             <a href="{{route('product',$my_last->id)}}"><img src="{{asset('front/images/products/'.$my_last->photo)}}" class="card-img-top" alt="..."></a>
                             <div class="card-body">
