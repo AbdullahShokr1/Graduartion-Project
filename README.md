@@ -7,6 +7,29 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## Installation
+
+First clone this repository, install the dependencies, and setup your .env file.
+
+```
+git clone https://github.com/AbdullahShokr1/Graduartion-Project.git
+composer install
+cp .env.example .env
+```
+
+And run the initial migrations and seeders.
+
+```
+php artisan migrate --seed
+```
+
+Then create the necessary database.
+
+```
+php artisan key:generate
+php artisan db:seed --class=BootSeeder
+```
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
