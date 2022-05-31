@@ -21,7 +21,7 @@ body {
 }
 
 .navbar_menu li a {
-    font-size: 15px;
+
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.1rem;
@@ -675,6 +675,25 @@ body.dark  div#myDIV a {
 }
 .work {
     text-align: center;
+}
+.imgpro{
+    padding: 0!important;
+
+}
+.imgprohed{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    padding: 0!important;
+    margin: 0 !important;
+    border: 0!important;
+}
+.imgpopo{
+    margin: 0!important;
+    padding: 0!important;
+    font-size: 0px;
+    font-weight: 0;
+    color: #0a001f;
 }
 
 

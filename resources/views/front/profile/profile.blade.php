@@ -4,7 +4,9 @@
         <form class="mb-4 form text-muted">
             <div class="bg-light p-4 mb-4">
                 <div class="d-flex align-items-center">
-                    <img class="avatar-img" src="{{asset('front/images/users/'.$myuser->photo)}}" width="90" alt="">
+                    <div class="text-center">
+                        <img class="review-image imgpro" src="{{asset('front/images/users/'.$myuser->photo)}}">
+                    </div>
                     <div class="p-3">
                         <a  href="{{route('profile.editMyUser',[Auth::user('user')->name,$myuser->id])}}" class="btn btn-light text-dark shadow" type="button"> <i class="fa fa-sync-alt mr-1" aria-hidden="true"></i>Change Avatar </a>
                         <div class=" mb-0 text-muted"><small>JPG, GIF or PNG image. 300 x 300 required.</small>

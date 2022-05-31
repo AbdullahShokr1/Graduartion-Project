@@ -230,7 +230,7 @@
     @endif
     <div class="container" style="margin-top: 150px;">
         <div class="section-tittle mb-5 text-center">
-            <h2>LAST VIEWED PRODUCTS</h2>
+            <h2>YOU MIGHT ALSO LIKE</h2>
         </div>
         @if(!($last_products->isEmpty()))
             <div class="row">
@@ -242,7 +242,7 @@
                                 <div class=" d-flex justify-content-between align-items-center">
                                     <div class="review">
                                         <div class="rating" style="color: #ffd814;">
-                                            @if(($product->review->count())> 0)
+                                            @if(($my_last->review->count())> 0)
                                                 @if(((($my_last->review->max('review')/$my_last->review->count())*100)/100))
                                                     @if(((($my_last->review->max('review')/$my_last->review->count())*100)/100) < 2)
                                                         <i class="fas fa-star"></i>
