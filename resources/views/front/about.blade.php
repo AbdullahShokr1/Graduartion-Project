@@ -1,11 +1,11 @@
 <x-homea title="About Us">
     <!--Start content-->
 
-    <section class="shadow mt-5 col-xs-12" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{ asset('front/images/home/banner_photo.png')}}') no-repeat center top;  background-size: cover; position: relative; min-height: 690px; margin-bottom: 100px; display: flex;align-items: end;padding: 41px;">
+    <section class="shadow mt-5 col-xs-12" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{ asset('front/images/about/our.jpg')}}') no-repeat center top;  background-size: cover; position: relative; min-height: 690px; margin-bottom: 100px; display: flex;align-items: end;padding: 41px;background-attachment:fixed;background-repeat:no-repeat;">
         <div class="container">
             <div class="row text-start " style="">
-                <div class="text-white col-xl-7 p-4 " style=" background-color: rgba(0,0,0, 0.4);  border: 1px solid #f1f1f1;">
-                    <h1>We are The Five Adventurers</h1>
+                <div class="text-white col-md-6 pt-4 pb-4" style=" background-color: rgba(0,0,0, 0.4);  border: 1px solid #f1f1f1; bottom: 160px;left: 15px;">
+                    <h3>We are The Five Adventurers</h3>
                 </div>
             </div>
         </div>
@@ -23,10 +23,10 @@
                         <div class="myimage">
                             <img class="rounded-circle shadow" src="{{ asset('front/images/about/'.$about->photo)}}" width="96" alt="{{$about->name}}">
                         </div>
-                        <div class="ml-2 ">
-                            <h5 class=" mb-1">{{$about->name}}</h5>
-                            <p class="text-muted mb-0">{{$about->role}} & {{$about->des}}</p>
-                            <a class="p-0 text-decoration-none blog-head" href="">
+                        <div class="ml-4">
+                            <h5 class="mb-1">{{$about->name}}</h5>
+                            <p class="text-muted mb-0">{{$about->role}}</p>
+                            <a class="p-0 text-decoration-none" href="">
                                 <i class="fa fa-envelope"></i> {{$about->email}}
                             </a>
                         </div>

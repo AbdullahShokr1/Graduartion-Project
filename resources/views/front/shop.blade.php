@@ -6,10 +6,12 @@
                 <div class="col-md-3 mb-4 p-2 shadow">
                     <div class="card pb-3" style="z-index: 1; ">
                         <div style="z-index: 1; overflow: hidden;">
-                            <div class="badge bg-dark text-white card-badge card-badge-start text-uppercase">
-                                {{$product->offer}}
-                            </div>
-                            <a href="{{route('product',$product->id)}}"><img src="{{asset('front/images/products/'.$product->photo)}}" class="card-img-top zoom" alt="..."></a>
+                            @if($product->offer)
+                                <div class="badge bg-dark text-white card-badge card-badge-start text-uppercase">
+                                    {{$product->offer}}
+                                </div>
+                            @endif
+                            <a href="{{route('product',$product->id)}}" class="p-0"><img src="{{asset('front/images/products/'.$product->photo)}}" class="card-img-top zoom" alt="..."></a>
                         </div>
                         <div class="card-body">
                             <div class=" d-flex justify-content-between align-items-center">
@@ -89,6 +91,7 @@
             </div>
         </div>
     </div>
+
 
     <!--end content-->
     <hr>

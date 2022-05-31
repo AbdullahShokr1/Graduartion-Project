@@ -11,7 +11,6 @@ class About extends Model
     protected $fillable = [
         'name',
         'role',
-        'des',
         'email',
         'photo',
     ];

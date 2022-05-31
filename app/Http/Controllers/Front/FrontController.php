@@ -24,7 +24,7 @@ class FrontController extends Controller
         return view("front.home",[
             'products' => Product::take(12)->get(),
             'last_products' => Product::with('review')->latest()->take(4)->get(),
-            'best_products' => Product::with('review')->inRandomOrder()->limit(8)->get(),
+            'best_products' => Product::with('review')->latest()->take(8)->get(),
             'abouts' => About::take(5)->get(),
 
         ],compact('home'));

@@ -112,7 +112,9 @@ class ProductController extends Controller
         }
 
         if($product){
-            return view("front.product",compact('product','review','check','total_Review'));
+            return view("front.product",[
+                'last_products' => Product::with('review')->latest()->take(4)->get(),
+            ],compact('product','review','check','total_Review'));
 
         }else{
             return redirect()->route('shop');

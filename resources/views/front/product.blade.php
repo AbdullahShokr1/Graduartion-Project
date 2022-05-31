@@ -2,8 +2,7 @@
     <!--start content-->
     <div class="container ">
         <div class="row mb-5" style="margin-top: 140px;">
-            <div class="col-md-6">
-
+            <div class="col-md-8 col-12 col-sm-6">
 
                 <div class="card" style="z-index: 1;">
                     <div>
@@ -11,7 +10,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 " style="margin-left: 150px;box-shadow: 0 10px 30px 0 #0d0c0d33; margin-bottom: 100px;">
+            <div class="col-md-4 col-12 col-sm-12" style="box-shadow: 0 10px 30px 0 #0d0c0d33; margin-bottom: 100px;">
                 <div class=" text-center mt-5">
                     <h2>{{$product->title}}</h2>
                     <div class="card-body">
@@ -63,26 +62,23 @@
                                 </div>
                                 <p>({{$product->review->count()}} Review)</p>
                             </div>
-                            <div class="text-muted" style="text-decoration: line-through; margin-left: 120px;"> $500 </div>
                             <div class="price"> ${{$product->price}} </div>
                         </div>
                         <div class="text-muted">{{$product->describe}}</div>
 
 
-                        <div class="mb-2 col-lg-6 col-12 mt-2">
+                        <div class="mb-2 col-lg-12 mt-2">
                             <form method="post" action="{{route('cart.store',$product->id)}}" id="cart-form-{{$product->id}}">
                                 @csrf
                                 <input name="user_id" value="@if(Auth::user('user')){{Auth::user('user')->id}}@endif" hidden>
                                 <input name="product_id" value="{{$product->id}}" hidden>
                                 <input name="total_cost" value="{{($product->price)*(1)}}" hidden>
                                 <label>Amount <span class="text-muted">(required)</span></label>
-                                <input type="number" id="amount" class="form-control" name="amount" style="max-width: 5rem; text-align: center;" value="1">
+                                <input type="number" id="amount" class="form-control" name="amount" min="1" style=" text-align: center;" value="1">
                             </form>
                         </div>
-                        <button type="button" class="btn btn-dark" style="width: 80%;"  onclick="event.preventDefault(); document.getElementById('cart-form-{{$product->id}}').submit();">Add to card</button>
-
+                        <button type="button" class="btn btn-primary" style="width: 80%;" onclick="event.preventDefault(); document.getElementById('cart-form-{{$product->id}}').submit();">Add to cart</button>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -90,68 +86,69 @@
     <hr>
     <div class="container mb-4">
         <div class="row">
-            <div class="col-2">
-                <h1 class="ml-3">{{$total_Review}}</h1>
+            <div class="col-md-2 col-4 text-center">
+                <h1 class=" text-center">{{$total_Review}}</h1>
                 <p class="text-success ">VIEW REVIEWS</p>
             </div>
-            <div class="col-6 mt-4">
+            <div class="col-md-6 col-8 mt-4 text-center">
                 <p class="text-muted">This minimalist glasses is suitable for any occasion. Whether on the road by
                     bike, shopping or in the nightlife.</p>
             </div>
         </div>
         @foreach($review as $myReview)
             <div class="row mt-4">
-                <div class="d-flex">
-                    <div class="text-center"><img class="review-image" src="{{asset('front/images/users/'.$myReview->user->photo)}}">
-                        <span class="text-uppercase text-muted">{{$myReview->created_at}}</span></div>
-                    <div>
-                        <div class=" col-8 ml-5">
-                            <h5 class="mt-2 mb-1">{{$myReview->user->name}}</h5>
-                            <div class="mb-2">
-                                <div class="rating" style="color: #ffd814;">
-                                    @switch($myReview->review)
-                                        @case(1)
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star-half-alt"></i>
-                                                <i class="far fa-star"></i>
-                                                <i class="far fa-star"></i>
-                                                <i class="far fa-star"></i>
-                                        @break
-                                        @case(2)
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half-alt"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                        @break
-                                        @case(3)
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half-alt"></i>
-                                            <i class="far fa-star"></i>
-                                        @break
-                                        @case(4)
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half-alt"></i>
-                                        @break
-                                        @case(5)
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        @break
-                                    @endswitch
-                                </div>
-                            </div>
-                            <p class="text-muted">{{$myReview->comment}}</p>
+                <div class="col-md-2 col-4">
+                    <div class="d-flex">
+                        <div class="text-center"><img class="review-image" src="{{asset('front/images/users/'.$myReview->user->photo)}}">
+                            <span class="text-uppercase text-muted">{{$myReview->updated_at}}</span>
                         </div>
                     </div>
                 </div>
+                <div class="col-md-8 col-8">
+                        <h5 class="mt-2 mb-1">{{$myReview->user->name}}</h5>
+                        <div class="mb-2">
+                            <div class="rating" style="color: #ffd814;">
+                                @switch($myReview->review)
+                                    @case(1)
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    @break
+                                    @case(2)
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    @break
+                                    @case(3)
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <i class="far fa-star"></i>
+                                    @break
+                                    @case(4)
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    @break
+                                    @case(5)
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    @break
+                                @endswitch
+                            </div>
+                        </div>
+                        <p class="text-muted">{{$myReview->comment}}</p>
+                    </div>
             </div>
             <hr>
         @endforeach
@@ -231,6 +228,83 @@
             </div>
         </div>
     @endif
+    <div class="container" style="margin-top: 150px;">
+        <div class="section-tittle mb-5 text-center">
+            <h2>LAST VIEWED PRODUCTS</h2>
+        </div>
+        @if(!($last_products->isEmpty()))
+            <div class="row">
+                @foreach($last_products as $my_last)
+                    <div class="col-md-3 col-12 mb-5">
+                        <div class="card text-center">
+                            <a href="{{route('product',$my_last->id)}}" class="p-0"><img src="{{asset('front/images/products/'.$my_last->photo)}}" class="card-img-top" alt="..."></a>
+                            <div class="card-body">
+                                <div class=" d-flex justify-content-between align-items-center">
+                                    <div class="review">
+                                        <div class="rating" style="color: #ffd814;">
+                                            @if(($product->review->count())> 0)
+                                                @if(((($my_last->review->max('review')/$my_last->review->count())*100)/100))
+                                                    @if(((($my_last->review->max('review')/$my_last->review->count())*100)/100) < 2)
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star-half-alt"></i>
+                                                        <i class="far fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                    @elseif(((($my_last->review->max('review')/$my_last->review->count())*100)/100) > 1 && ((($my_last->review->max('review')/$my_last->review->count())*100)/100) < 3)
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star-half-alt"></i>
+                                                        <i class="far fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                    @elseif(((($my_last->review->max('review')/$my_last->review->count())*100)/100) > 2 && ((($my_last->review->max('review')/$my_last->review->count())*100)/100) < 4)
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star-half-alt"></i>
+                                                        <i class="far fa-star"></i>
+                                                    @elseif(((($my_last->review->max('review')/$my_last->review->count())*100)/100) > 3 && ((($my_last->review->max('review')/$my_last->review->count())*100)/100) < 5)
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star-half-alt"></i>
+                                                    @else
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                    @endif
+                                                @endif
+                                            @else
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star-half-alt"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                            @endif
+
+                                        </div>
+                                        <p>({{$my_last->review->count()}} Review)</p>
+                                    </div>
+                                    <div class="price">${{$my_last->price}}</div>
+                                </div>
+
+                                <div class="overlay" style="position:unset!important;">
+                                    <div>
+                                        <a type="button" class="btn btn-danger" href="{{route('GlassesModel',$my_last->id)}}" style="width: 100%;">live view</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        @else
+            <p style="text-align: center;">No Product to show</p>
+        @endif
+    </div>
 
     <!--end content-->
 </x-homea>

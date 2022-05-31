@@ -48,13 +48,7 @@
                                 @error('role')
                                 {{$message}}
                                 @enderror
-                                <div class="form-group">
-                                    <label for="exampleInputTitle">Description</label>
-                                    <input type="text" name="des" value="{{$about->des}}"  class="form-control" id="exampleInputTitle" placeholder="Enter description">
-                                </div>
-                                @error('des')
-                                {{$message}}
-                                @enderror
+
                                 <div class="form-group">
                                     <label for="exampleInputTitle">Email</label>
                                     <input type="email" name="email" value="{{$about->email}}"  class="form-control" id="exampleInputTitle" placeholder="Enter email">

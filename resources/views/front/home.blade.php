@@ -99,10 +99,12 @@
                     <div class="col-md-3 mb-4 p-2 shadow">
                         <div class="card pb-3" style="z-index: 1; ">
                             <div style="z-index: 1; overflow: hidden;">
-                                <div class="badge bg-dark text-white card-badge card-badge-start text-uppercase">
-                                    {{$product->offer}}
-                                </div>
-                                <a href="{{route('product',$product->id)}}"><img src="{{asset('front/images/products/'.$product->photo)}}" class="card-img-top zoom" alt="..."></a>
+                                @if($product->offer)
+                                    <div class="badge bg-dark text-white card-badge card-badge-start text-uppercase">
+                                        {{$product->offer}}
+                                    </div>
+                                @endif
+                                <a href="{{route('product',$product->id)}}" class="p-0"><img src="{{asset('front/images/products/'.$product->photo)}}" class="card-img-top zoom" alt="..."></a>
                             </div>
                             <div class="card-body">
                                 <div class=" d-flex justify-content-between align-items-center">
@@ -195,7 +197,7 @@
     </section>
 
     <div class="container" style="margin-top: 150px;">
-        <div class="section-tittle mb-5">
+        <div class="section-tittle mb-5 text-center">
             <h2>LAST VIEWED PRODUCTS</h2>
         </div>
         @if(!($last_products->isEmpty()))
@@ -203,7 +205,7 @@
                 @foreach($last_products as $my_last)
                     <div class="col-md-3 mb-5">
                         <div class="card text-center">
-                            <a href="{{route('product',$my_last->id)}}"><img src="{{asset('front/images/products/'.$my_last->photo)}}" class="card-img-top" alt="..."></a>
+                            <a href="{{route('product',$my_last->id)}}" class="p-0"><img src="{{asset('front/images/products/'.$my_last->photo)}}" class="card-img-top" alt="..."></a>
                             <div class="card-body">
                                 <div class=" d-flex justify-content-between align-items-center">
                                     <div class="review">

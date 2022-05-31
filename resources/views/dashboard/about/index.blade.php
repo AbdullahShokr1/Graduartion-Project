@@ -75,9 +75,6 @@
                                 {{$about->role}}
                             </td>
                             <td>
-                                {{$about->des}}
-                            </td>
-                            <td>
                                 {{$about->email}}
                             </td>
                             <td class="project-actions text-right">

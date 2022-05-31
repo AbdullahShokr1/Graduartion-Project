@@ -33,7 +33,6 @@ class AboutController extends Controller
         $my_post = [
             'name' => $request -> name,
             'role' => $request -> role,
-            'des' => $request -> des,
             'email'=> $request -> email,
             'photo'=>$file_name,
         ];
@@ -58,7 +57,6 @@ class AboutController extends Controller
         $my_post = [
             'name' => $request -> name,
             'role' => $request -> role,
-            'des' => $request -> des,
             'email'=> $request -> email,
             'photo'=>$file_name,
         ];

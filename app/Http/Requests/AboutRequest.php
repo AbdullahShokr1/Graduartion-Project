@@ -29,7 +29,6 @@ class AboutRequest extends FormRequest
                 'name' => 'required|string|max:60',
                 'email' => 'required|email|max:255|unique:abouts',
                 'role' => 'required|',
-                'des' => 'required|',
                 'photo' => 'nullable',
             ];
         }
@@ -39,7 +38,6 @@ class AboutRequest extends FormRequest
                 'name' => 'required|string|max:60',
                 'email' => ['required', 'email', 'max:255', Rule::unique('abouts')->ignore($this->about->id)],
                 'role' => 'required|max:60',
-                'des' => 'required|max:60',
                 'photo' =>  ['nullable'],
             ];
         }

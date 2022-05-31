@@ -48,13 +48,6 @@
                                 {{$message}}
                                 @enderror
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Description</label>
-                                    <input type="text" name="des" value="{{old('des')}}" class="form-control" id="exampleInputEmail1" placeholder="Enter Description">
-                                </div>
-                                @error('des')
-                                {{$message}}
-                                @enderror
-                                <div class="form-group">
                                     <label for="exampleInputEmail1">Email address</label>
                                     <input type="email" name="email" value="{{old('email')}}" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
                                 </div>
