@@ -695,5 +695,8 @@ body.dark  div#myDIV a {
     font-weight: 0;
     color: #0a001f;
 }
+a.nav-link.mr-2.text-white {
+    font-size: 18px;
+}
 
 
