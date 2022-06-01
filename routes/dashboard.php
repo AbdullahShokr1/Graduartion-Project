@@ -61,6 +61,8 @@ Route::namespace("Dashboard")->prefix("dashboard")->name("dashboard.")->group(fu
         });
         Route::get("profile/{name}/",'AdminsController@show')->name('admin.profile');
         Route::get("profile/edit/{id}",'AdminsController@editmyinfo')->name('admin.profile.edit');
+        Route::put("profile/update/{admin}",'AdminsController@updatemyinfo')->name('admin.profile.update');
+
     });
 });
 

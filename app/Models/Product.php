@@ -30,5 +30,8 @@ class Product extends Model
     public function review(){
         return $this->hasMany('App\Models\Review','product_id');
     }
+    public function order(){
+        return $this->hasMany('App\Models\Order','product_id');
+    }
     #################End Relations#################
 }

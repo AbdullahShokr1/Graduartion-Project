@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\OrderRequest;
 use App\Models\Cart;
+use App\Models\Moreinfo;
 use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
@@ -13,7 +15,7 @@ class OrderController extends Controller
     public function index()
     {
         return view("dashboard.order.index",[
-            'orders' => Order::query()->latest()->paginate(10)
+            'orders' => Order::with('user','cart','product')->latest()->paginate(10),
         ]);
     }
 
@@ -24,7 +26,9 @@ class OrderController extends Controller
         foreach ($shoppings as $key => $shoppings_value) {
             $devicesS[] = Order::create([
                 'shopping_id' => $shoppings_value,
-                'status' => "false"
+                'status' => "false",
+                'user_id' => Auth::user('user')->id,
+                'product_id'=>$shoppings_value,
             ]);
         }
         return redirect()->route('payment.create')->with(['success'=>'Product Added Successfully']) ;

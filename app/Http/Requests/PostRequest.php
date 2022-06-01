@@ -39,13 +39,13 @@ class PostRequest extends FormRequest
 
         if ($this->getMethod() === 'PUT') {
             return [
-                'title' => ['required', 'string', 'max:70', Rule::unique('posts')->ignore($this->post->id)],
+                'title' => ['required', 'string', 'max:70'],
                 'description' => ['required','string','max:155'],
                 'keywords' => ['required','string','max:200'],
                 'mycontent' => ['required'],
                 'category_id' => ['required','exists:categories,id'],
                 'writer_id' => ['required','exists:admins,id'],
-                'slug' => ['required','string','max:50', Rule::unique('posts')->ignore($this->post->id)],
+                'slug' => ['required','string','max:50'],
                 'photo' => 'nullable',
             ];
         }

@@ -98,7 +98,9 @@
                             @csrf
                             @foreach($products as $product)
                                 <input class="form-control" name="shopping_id[]" value="{{$product->id}}" hidden>
+                                <input class="form-control" name="product_id[]" value="{{$product->id}}" hidden>
                                 <input class="form-control" name="status[]" value="false" hidden>
+                                <input name="user_id" value="@if(Auth::user('user')){{Auth::user('user')->id}}@endif" hidden>
                             @endforeach
                             <button class="btn btn-primary btn-shadow d-block w-100 mt-4" type="submit" ><i class="ci-card fs-lg me-2"></i>Proceed to Checkout</button>
                         </form>

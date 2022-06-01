@@ -42,15 +42,18 @@
                             Email
                         </th>
                         <th>
-                            Phone
+                            Product Name
                         </th>
                         <th>
-                            Subject
+                            Price
                         </th>
-                        <th style="width: 40%">
-                            Message
+                        <th>
+                            Amount
                         </th>
-                        <th style="width: 20%">
+                        <th>
+                            Total Cost
+                        </th>
+                        <th style="width: 10%">
                         </th>
                     </tr>
                     </thead>
@@ -61,21 +64,23 @@
                                 {{$order->id}}
                             </td>
                             <td style="width: 10%">
-                                {{$order->first_name}}
-                            </td>
-                            <td style="width: 10%">
-                                {{$order->last_name}}
+                                {{$order->user->name}}
                             </td>
                             <td style="width: 1%">
-                                {{$order->email}}
+                                {{$order->user->email}}
                             </td>
                             <td style="width: 10%">
-                                {{$order->phone}}
+                                {{$order->product->title}}
                             </td>
                             <td style="width: 10%">
-                                {{$order->city}}
+                                {{$order->product->price}}
                             </td>
-
+                            <td style="width: 10%">
+                                {{$order->cart->amount}}
+                            </td>
+                            <td style="width: 10%">
+                                {{$order->cart->total_cost}}
+                            </td>
                             <td class="project-actions text-right">
                                 <a class="btn btn-danger btn-sm" onclick="document.getElementById('contact-del-{{$order->id}}').submit()">
                                     <i class="fas fa-trash">

@@ -11,9 +11,14 @@ class Order extends Model
     protected $fillable = [
         'status',
         'shopping_id',
+        'user_id',
+        'product_id',
     ];
 
     ################Start Relations################
+    public function user(){
+        return $this->belongsTo('App\Models\User','user_id');
+    }
     public function cart(){
         return $this-> belongsTo('App\Models\Cart','shopping_id');
     }
@@ -22,6 +27,9 @@ class Order extends Model
     }
     public function sales(){
         return $this->hasOne('App\Models\Sales','order_id');
+    }
+    public function product(){
+        return $this->belongsTo('App\Models\Product','product_id');
     }
     #################End Relations#################
 }

@@ -29,6 +29,8 @@ class OrderRequest extends FormRequest
             return [
                 'status'=> 'required',
                 'shopping_id'=>  ['required', Rule::unique('orders')],
+                'user_id'=>'nullable',
+                'product_id'=>'required'
             ];
         }
 
@@ -36,6 +38,8 @@ class OrderRequest extends FormRequest
             return [
                 'status'=> 'required',
                 'shopping_id' => ['required', Rule::unique('orders')],
+                'user_id'=>'nullable',
+                'product_id'=>'required'
             ];
         }
     }

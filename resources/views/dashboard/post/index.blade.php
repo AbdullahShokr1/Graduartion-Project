@@ -68,10 +68,10 @@
                                 {{$post->description}}
                             </td>
                             <td>
-                                {{$post->category_id}}
+                                {{$post->category->title}}
                             </td>
                             <td>
-                                {{$post->writer_id}}
+                                {{$post->admin->name}}
                             </td>
                             <td class="project-actions text-right">
                                 <a class="btn btn-primary btn-sm" href="#">

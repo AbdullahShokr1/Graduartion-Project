@@ -83,9 +83,27 @@ class AdminsController extends Controller
     public function editmyinfo($id){
         if(Auth::user('admin')->id == $id){
             $admin=Admin::query()->where('id','=',$id)->find($id);
-            return view('dashboard.admins.update',compact('admin'));
+            return view('dashboard.admins.updateinfo',compact('admin'));
         }else{
             return redirect()->route('dashboard.admin.profile',Auth::user('admin')->name);
         }
+    }
+    //update User && Store in DB
+    public function updatemyinfo(Admin $admin,AdminRequest $request){
+        if(($request -> photo) != Null){
+            $file_name = $this -> saveImages($request -> photo,'dashboardfile/images/admins');
+        }else{
+            $file_name = $admin -> photo;
+        }
+        $admin->update([
+            'name' => $request -> name,
+            'email'=> $request -> email,
+            'password'=> $request -> password,
+            'privileges'=>$request->privileges,
+            'photo'=> $file_name,
+        ],$request->validated());
+
+        return redirect()->route('dashboard.admin.profile',Auth::user('admin')->name)->with(['success'=>'admins Updated Successfully']) ;
+
     }
 }

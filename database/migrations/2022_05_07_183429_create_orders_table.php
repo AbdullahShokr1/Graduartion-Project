@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->string('status')->default('false');
+            $table->string('user_id');
+            $table->string('product_id');
             $table->foreignId('shopping_id')->constrained()->references('id')->on('carts')->onDelete('cascade');
             $table->timestamps();
         });

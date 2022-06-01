@@ -62,5 +62,8 @@ class User extends Authenticatable
     public function review(){
         return $this->hasMany('App\Models\Review','user_id');
     }
+    public function order(){
+        return $this->hasMany('App\Models\Order','user_id');
+    }
     #################End Relations#################
 }

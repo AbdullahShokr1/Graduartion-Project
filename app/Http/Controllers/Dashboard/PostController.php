@@ -14,11 +14,8 @@ class PostController extends Controller
     public function index()
     {
         return view("dashboard.post.index",[
-            'posts' => Post::query()->latest()->paginate(15)
+            'posts' => Post::with('category','admin')->latest()->paginate(15)
         ],
-//            [
-//            'categories'=> Category::get(),
-//        ]
         );
     }
     public function create()
