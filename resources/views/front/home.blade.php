@@ -56,7 +56,7 @@
                         @foreach($products as $product)
                             <div class="card item">
                                 <div class="work">
-                                    <div style="z-index: 1; overflow: hidden; width: auto; height: 219px;">
+                                    <div style="z-index: 1; overflow: hidden; width: auto; display: flex;">
                                         <div class="badge bg-dark text-white card-badge card-badge-start text-uppercase">
                                             {{$product->offer}}
                                         </div>
@@ -83,7 +83,7 @@
     @else
         <p style="text-align: center;">No Product to show</p>
     @endif
-    <section class="mt-3 pt-2 pb-2" style="background-color: #11101021;  background-image: url('{{asset('front/images/home/photo.jpg')}}');background-attachment: fixed; background-position: inherit; background-repeat: no-repeat; background-size: cover;height: 400px;">
+    <section class="mt-3 pt-2 pb-2" style="background-color: #11101021;  background-image: url('{{asset('front/images/home/photo.jpg')}}');background-attachment: fixed; background-position: inherit; background-repeat: no-repeat; background-size: cover;height: 234px;">
         <div class="container ">
             <div class="row">
             </div>

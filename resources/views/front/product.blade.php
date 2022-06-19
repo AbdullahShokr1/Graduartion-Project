@@ -87,7 +87,7 @@
     <div class="container mb-4">
         <div class="row">
             <div class="col-md-2 col-4 text-center">
-                <h1 class=" text-center">{{$total_Review}}</h1>
+                <h1 class=" text-center">{{number_format($total_Review, 2)}}</h1>
                 <p class="text-success ">VIEW REVIEWS</p>
             </div>
             <div class="col-md-6 col-8 mt-4 text-center">
